@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+        BURGERMAN | Payment
+    </title>
+
+
+    <link rel="stylesheet"
+          href="style.css">
+
+</head>
+
+
+<body>
+
+
+<div class="payment-page">
+
+
+    <!-- ==========================
+         HEADER
+    =========================== -->
+
+    <header class="payment-header">
+
+
+        <div class="brand">
+
+
+            <h1>
+                BURGERMAN
+            </h1>
+
+
+            <p>
+                Secure Payment
+            </p>
+
+
+        </div>
+
+
+
+        <button
+            class="back-btn"
+            onclick="gotocart()">
+
+
+            ← Back to Cart
+
+
+        </button>
+
+
+    </header>
+
+
+
+
+
+    <!-- ==========================
+         PAGE TITLE
+    =========================== -->
+
+
+    <h1 class="payment-title">
+
+
+        💳 PAYMENT
+
+
+    </h1>
+
+
+
+
+
+
+    <!-- ==========================
+         PAYMENT CONTENT
+    =========================== -->
+
+
+    <section class="payment-container">
+
+
+
+
+
+        <!-- ======================
+             ORDER SUMMARY
+        ======================= -->
+
+
+        <section class="payment-summary">
+
+
+            <h2>
+
+                Order Summary
+
+            </h2>
+
+
+
+            <div
+                id="paymentItems"
+                class="payment-items">
+
+
+                <!-- Items loaded from cart -->
+
+
+
+            </div>
+
+
+
+
+
+            <div class="payment-total">
+
+
+                <span>
+
+                    Amount Payable
+
+                </span>
+
+
+
+                <strong
+                    id="paymentTotal">
+
+                    ₹0
+
+                </strong>
+
+
+            </div>
+
+
+
+        </div>
+
+
+
+
+
+
+        <!-- ======================
+             PAYMENT METHODS
+        ======================= -->
+
+
+     <!-- ===========================
+     PAYMENT METHOD SELECTION
+=========================== -->
+
+
+<section class="payment-method-section">
+
+
+<h2>
+
+Select Payment Method
+
+</h2>
+
+
+
+
+
+<div class="payment-options">
+
+
+
+
+
+<label class="payment-option">
+
+
+<input
+
+type="radio"
+
+name="payment"
+
+value="UPI"
+
+onclick="selectPayment('UPI')">
+
+
+<span>
+
+💳 UPI Payment
+
+</span>
+
+
+
+</label>
+
+
+
+
+
+
+
+
+<label class="payment-option">
+
+
+<input
+
+type="radio"
+
+name="payment"
+
+value="Card"
+
+onclick="selectPayment('Card')">
+
+
+<span>
+
+💳 Card Payment
+
+</span>
+
+
+
+</label>
+
+
+
+
+
+
+
+
+<label class="payment-option">
+
+
+<input
+
+type="radio"
+
+name="payment"
+
+value="Cash"
+
+onclick="selectPayment('Cash')">
+
+
+<span>
+
+💵 Cash Payment
+
+</span>
+
+
+
+</label>
+
+
+ <p>
+
+                    Pay your Cash in the counter
+
+                </p>
+
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+
+            <!-- ======================
+                 UPI QR SECTION
+            ======================= -->
+
+
+            <div
+
+                id="upiSection"
+
+                class="upi-section"
+
+                style="display:none;">
+
+
+
+                <h3>
+
+                    Scan QR Code
+
+                </h3>
+
+
+
+                <img
+
+                    src="images/payment-qr.png"
+
+                    alt="UPI QR Code"
+
+                    class="qr-code">
+
+
+
+                <p>
+
+                    Use any UPI application
+
+                </p>
+
+
+            </div>
+
+
+
+
+
+
+
+            <!-- ======================
+                 CARD SECTION
+            ======================= -->
+
+
+            <div
+
+                id="cardSection"
+
+                class="card-section"
+
+                style="display:none;">
+
+
+
+                <h3>
+
+                    Card Payment
+
+                </h3>
+
+
+
+                <p>
+
+                    Insert your card in the payment machine
+
+                </p>
+
+
+
+                <div class="card-machine">
+
+
+                    💳
+
+                </div>
+
+
+            </div>
+                        <!-- ==========================
+                 PAYMENT ACTION
+            =========================== -->
+          <!-- ===========================
+     PAY NOW BUTTON
+=========================== -->
+
+
+<div class="pay-now-container">
+
+
+<button
+
+type="button"
+
+class="pay-now-btn"
+
+onclick="placeOrder()">
+
+
+PAY NOW
+
+
+</button>
+
+
+</div>
+
+
+
+    <!-- ==========================
+         PAYMENT MESSAGE
+    =========================== -->
+
+
+    <div
+
+        id="paymentMessage"
+
+        class="payment-message"
+
+        style="display:none;">
+
+
+    </div>
+
+
+
+
+
+
+    <!-- ==========================
+         FOOTER
+    =========================== -->
+
+
+    <footer class="payment-footer">
+
+
+        <p>
+
+            Thank you for choosing
+
+            <strong>
+
+                BURGERMAN
+
+            </strong>
+
+        </p>
+
+
+    </footer>
+
+
+
+</div>
+
+
+
+
+
+
+
+<script src="script.js"></script>
+
+
+
+<script>
+
+
+/*====================================================
+ PAYMENT PAGE INITIALIZATION
+====================================================*/
+
+
+document.addEventListener(
+
+"DOMContentLoaded",
+
+function(){
+
+
+    loadPaymentDetails();
+
+
+});
+
+
+
+
+
+
+
+/*====================================================
+ LOAD PAYMENT DETAILS
+====================================================*/
+
+
+function loadPaymentDetails(){
+
+
+    const cart =
+
+    JSON.parse(
+
+        localStorage.getItem("cart")
+
+    ) || [];
+
+
+
+    let total = 0;
+
+
+
+    const itemsBox =
+
+    document.getElementById(
+
+        "paymentItems"
+
+    );
+
+
+
+    itemsBox.innerHTML="";
+
+
+
+
+    cart.forEach(item=>{
+
+
+
+        total +=
+
+        item.price *
+
+        item.quantity;
+
+
+
+
+
+        itemsBox.innerHTML += `
+
+
+        <div class="payment-item">
+
+
+            <span>
+
+                ${item.name}
+
+                x ${item.quantity}
+
+            </span>
+
+
+            <span>
+
+                ₹${item.price * item.quantity}
+
+            </span>
+
+
+        </div>
+
+
+        `;
+
+
+
+    });
+
+
+
+
+
+    const gst = total * 0.05;
+
+
+    const finalAmount =
+
+    total + gst;
+
+
+
+
+
+    document.getElementById(
+
+        "paymentTotal"
+
+    ).innerText =
+
+    "₹" + finalAmount.toFixed(2);
+
+
+
+
+
+
+    document.getElementById(
+
+        "payAmount"
+
+    ).innerText =
+
+    finalAmount.toFixed(2);
+
+
+
+}
+
+
+
+
+
+
+
+
+
+/*====================================================
+ PAYMENT METHOD SELECTION
+====================================================*/
+
+
+function selectPayment(method){
+
+
+
+    localStorage.setItem(
+
+        "paymentMethod",
+
+        method
+
+    );
+
+
+
+    document.getElementById(
+
+        "upiSection"
+
+    ).style.display =
+
+    "none";
+
+
+
+    document.getElementById(
+
+        "cardSection"
+
+    ).style.display =
+
+    "none";
+
+
+
+
+
+    if(method==="UPI"){
+
+
+        document.getElementById(
+
+            "upiSection"
+
+        ).style.display="block";
+
+
+    }
+
+
+
+    if(method==="Card"){
+
+
+        document.getElementById(
+
+            "cardSection"
+
+        ).style.display="block";
+
+
+    }
+
+
+
+}
+
+
+
+
+
+
+
+
+
+/*====================================================
+ PROCESS PAYMENT
+====================================================*/
+
+
+function processPayment(){
+
+
+
+    const paymentMethod =
+
+    localStorage.getItem(
+
+        "paymentMethod"
+
+    );
+
+
+
+
+
+    if(!paymentMethod){
+
+
+        alert(
+
+        "Please select payment method"
+
+        );
+
+
+        return;
+
+
+    }
+
+
+
+
+
+
+
+    const cart =
+
+    JSON.parse(
+
+        localStorage.getItem("cart")
+
+    ) || [];
+
+
+
+
+
+    if(cart.length===0){
+
+
+        alert(
+
+        "Your cart is empty"
+
+        );
+
+
+        return;
+
+
+    }
+
+
+
+
+
+
+
+    let subtotal = 0;
+
+
+
+    cart.forEach(item=>{
+
+
+        subtotal +=
+
+        item.price *
+
+        item.quantity;
+
+
+    });
+
+
+
+
+
+    let total =
+
+    subtotal +
+
+    (subtotal*0.05);
+
+
+
+
+
+
+    let orders =
+
+    JSON.parse(
+
+        localStorage.getItem(
+
+            "burgerOrders"
+
+        )
+
+    ) || [];
+
+
+
+
+
+
+
+    let token =
+
+
+    "BM" +
+
+    String(
+
+        orders.length + 1
+
+    )
+
+    .padStart(3,"0");
+
+
+
+
+
+
+
+
+    const order = {
+
+
+
+        token:token,
+
+
+
+        items:cart,
+
+
+
+        deliveryMode:
+
+        localStorage.getItem(
+
+            "deliveryMode"
+
+        ) || "Dine-In",
+
+
+
+
+        paymentMethod:
+
+
+
+        paymentMethod,
+
+
+
+
+        paymentStatus:
+
+        "Paid",
+
+
+
+
+        deliveryStatus:
+
+        "Preparing",
+
+
+
+
+        total:
+
+        Number(
+
+            total.toFixed(2)
+
+        ),
+
+
+
+
+        dateTime:
+
+        new Date()
+
+        .toLocaleString("en-IN")
+
+
+
+    };
+
+
+
+
+
+
+
+    orders.push(order);
+
+
+
+
+
+
+
+    localStorage.setItem(
+
+        "burgerOrders",
+
+        JSON.stringify(orders)
+
+    );
+
+
+
+
+
+
+
+
+    // Clear previous cart
+
+    localStorage.removeItem(
+
+        "cart"
+
+    );
+
+
+
+
+
+
+
+    // Save token for receipt
+
+    localStorage.setItem(
+
+        "currentToken",
+
+        token
+
+    );
+
+
+
+
+
+
+
+    document.getElementById(
+
+        "paymentMessage"
+
+    ).innerHTML = `
+
+
+        Payment Successful<br>
+
+
+        Token Number : ${token}
+
+
+    `;
+
+
+
+    document.getElementById(
+
+        "paymentMessage"
+
+    ).style.display="block";
+
+
+
+
+
+
+
+    setTimeout(function(){
+
+
+
+        window.location.href=
+
+        "receipt.html";
+
+
+
+    },1500);
+
+
+
+
+}
+
+
+
+</script>
+
+
+</body>
+
+
+</html>

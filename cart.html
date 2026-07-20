@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>BURGERMAN | Cart</title>
+
+    <link rel="stylesheet"
+          href="style.css">
+
+</head>
+
+<body>
+
+<div class="cart-page">
+
+    <!-- ==========================
+         HEADER
+    =========================== -->
+
+    <header class="page-header">
+
+        <div class="brand">
+
+            <h1>BURGERMAN</h1>
+
+            <p>Your Shopping Cart</p>
+
+        </div>
+
+        <button
+            class="back-btn"
+            onclick="window.location.href='menu.html'">
+
+            ← Back to Menu
+
+        </button>
+
+    </header>
+
+
+
+    <!-- ==========================
+          PAGE TITLE
+    =========================== -->
+
+    <h1 class="cart-title">
+
+        🛒 YOUR CART
+
+    </h1>
+
+
+
+    <!-- ==========================
+         EMPTY CART
+    =========================== -->
+
+    <div
+        id="emptyCart"
+        class="empty-cart"
+        style="display:none;">
+
+        <img
+            src="images/empty-cart.png"
+            alt="Empty Cart">
+
+        <h2>
+
+            Your Cart is Empty
+
+        </h2>
+
+        <p>
+
+            Add delicious burgers from the menu.
+
+        </p>
+
+        <button
+            class="primary-btn"
+            onclick="window.location.href='menu.html'">
+
+            Browse Menu
+
+        </button>
+
+    </div>
+
+
+
+    <!-- ==========================
+        CART SECTION
+    =========================== -->
+
+    <section
+        id="cartSection"
+        class="cart-container">
+
+
+
+        <!-- CART TABLE -->
+
+        <section class="cart-container">
+
+            <table class="cart-table">
+
+                <thead>
+
+                    <tr>
+
+                        <th>Image</th>
+
+                        <th>Burger</th>
+
+                        <th>Price</th>
+
+                        <th>Quantity</th>
+
+                        <th>Total</th>
+
+                        <th>Remove</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody
+                    id="cartTableBody">
+
+                    <!-- Loaded using script.js -->
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+
+
+       
+
+            <section class="cart-summary">
+
+                <span>
+
+                    Subtotal
+
+                </span>
+
+                <span
+                    id="subtotal">
+
+                    ₹0
+
+                </span>
+
+            </div>
+
+            <div class="summary-row">
+
+                <span>
+
+                    GST (5%)
+
+                </span>
+
+                <span
+                    id="gst">
+
+                    ₹0
+
+                </span>
+
+            </div>
+
+            <div class="summary-row total">
+
+                <span>
+
+                    Grand Total
+
+                </span>
+
+                <span
+                    id="grandTotal">
+
+                    ₹0
+
+                </span>
+
+            </div>
+
+            <hr>
+                        <!-- ==========================
+                 DELIVERY MODE
+            =========================== -->
+
+            <section class="delivery-section">
+
+                <h3>
+
+                    Delivery Mode
+
+                </h3>
+
+                <div class="delivery buttons">
+
+                    <label class="delivery-option">
+
+                        <input
+                            type="radio"
+                            name="deliveryMode"
+                            value="Dine-In"
+                            checked
+                            onchange="setDeliveryMode('Dine-In')">
+
+                        <span>
+
+                            🍽️ Dine-In
+
+                        </span>
+
+                    </label>
+
+                    <label class="delivery-option">
+
+                        <input
+                            type="radio"
+                            name="deliveryMode"
+                            value="Takeaway"
+                            onchange="setDeliveryMode('Takeaway')">
+
+                        <span>
+
+                            🥡 Takeaway
+
+                        </span>
+
+                    </label>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ==========================
+                 ACTION BUTTONS
+            =========================== -->
+
+            <div class="cart-actions">
+
+                <button
+                    class="secondary-btn"
+                    onclick="window.location.href='menu.html'">
+
+                    ← Continue Shopping
+
+                </button>
+
+                <button
+                    class="primary-btn"
+                    onclick="goToPayment()">
+
+                    Proceed to Payment →
+
+                </button>
+
+            </div>
+
+        </aside>
+
+    </section>
+
+
+
+    <!-- ==========================
+         FOOTER
+    =========================== -->
+
+    <footer class="cart-footer">
+
+        <p>
+
+            Thank you for choosing
+            <strong>BURGERMAN</strong>
+
+        </p>
+
+    </footer>
+
+</div>
+
+
+
+<!-- ==========================
+     SCRIPT
+=========================== -->
+
+<script src="script.js"></script>
+
+<script>
+
+/*=========================================
+ CART INITIALIZATION
+=========================================*/
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function(){
+
+        if(typeof loadStorage==="function"){
+            loadStorage();
+        }
+
+        if(typeof renderCart==="function"){
+            renderCart();
+        }
+
+        if(typeof updateOrderSummary==="function"){
+            updateOrderSummary();
+        }
+
+        /* Restore Delivery Mode */
+
+        const mode =
+        localStorage.getItem("deliveryMode")
+        || "Dine-In";
+
+        const radios =
+        document.querySelectorAll(
+            "input[name='deliveryMode']"
+        );
+
+        radios.forEach(radio=>{
+
+            if(radio.value===mode){
+
+                radio.checked=true;
+
+            }
+
+        });
+
+    }
+);
+
+
+
+/*=========================================
+ DELIVERY MODE
+=========================================*/
+
+function setDeliveryMode(mode){
+
+    localStorage.setItem(
+        "deliveryMode",
+        mode
+    );
+
+}
+
+</script>
+
+</body>
+
+</html>

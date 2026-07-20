@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Burgerman Manager Dashboard</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<div class="manager-page">
+
+    <!-- Header -->
+
+    <header class="manager-header">
+
+        <div class="brand">
+
+            <h1>BURGERMAN</h1>
+            <p>Manager Dashboard</p>
+
+        </div>
+
+        <button class="logout-btn" onclick="logoutManager()">
+            Logout
+        </button>
+
+    </header>
+
+
+    <!-- Dashboard Summary -->
+
+    <section class="dashboard-cards">
+
+
+        <div class="dashboard-card">
+
+            <h3>Total Orders</h3>
+
+            <p id="totalOrders">
+                0
+            </p>
+
+        </div>
+
+
+        <div class="dashboard-card">
+
+            <h3>Total Sales</h3>
+
+            <p id="totalSales">
+                ₹0
+            </p>
+
+        </div>
+
+
+        <div class="dashboard-card">
+
+            <h3>Pending Orders</h3>
+
+            <p id="pendingOrders">
+                0
+            </p>
+
+        </div>
+
+
+        <div class="dashboard-card">
+
+            <h3>Completed Orders</h3>
+
+            <p id="completedOrders">
+                0
+            </p>
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- Navigation Buttons -->
+
+    <section class="manager-navigation">
+
+
+        <button onclick="openOrders()">
+
+            📦 View Orders
+
+        </button>
+
+
+        <button onclick="openTransactions()">
+
+            💳 View Transactions
+
+        </button>
+
+
+        <button onclick="refreshManagerData()">
+
+            🔄 Refresh Data
+
+        </button>
+
+
+    </section>
+
+
+
+
+    <!-- Recent Orders -->
+
+    <section class="recent-orders">
+
+
+        <h2>
+            Recent Orders
+        </h2>
+
+
+        <table>
+
+
+            <thead>
+
+                <tr>
+
+                    <th>
+                        Token
+                    </th>
+
+
+                    <th>
+                        Items
+                    </th>
+
+
+                    <th>
+                        Mode
+                    </th>
+
+
+                    <th>
+                        Payment
+                    </th>
+
+
+                    <th>
+                        Amount
+                    </th>
+
+
+                    <th>
+                        Status
+                    </th>
+
+
+                </tr>
+
+            </thead>
+
+
+
+            <tbody id="recentOrdersBody">
+
+
+                <!-- Orders loaded by manager.js -->
+
+
+            </tbody>
+
+
+        </table>
+
+
+    </section>
+
+
+
+
+</div>
+
+
+
+
+<script src="manager.js"></script>
+
+
+</body>
+
+</html>

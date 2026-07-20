@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+
+<head>
+
+
+<meta charset="UTF-8">
+
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+
+<title>
+BURGERMAN | Receipt
+</title>
+
+
+
+<link rel="stylesheet"
+href="style.css">
+
+
+</head>
+
+
+
+<body>
+
+
+
+<div class="receipt-page">
+
+
+
+
+
+<!-- ==========================
+     HEADER
+=========================== -->
+
+
+<header class="page-header">
+
+
+
+<div class="brand">
+
+
+<h1>
+
+BURGERMAN
+
+</h1>
+
+
+<p>
+
+Order Receipt
+
+</p>
+
+
+</div>
+
+
+
+
+<button
+
+class="back-btn"
+
+onclick="window.location.href='index.html'">
+
+
+← Home
+
+
+</button>
+
+
+
+</header>
+
+
+
+
+
+
+
+<!-- ==========================
+     RECEIPT CARD
+=========================== -->
+
+
+<section class="receipt-container">
+
+
+
+
+
+<div class="receipt-card">
+
+
+
+
+
+<!-- LOGO -->
+
+
+<div class="receipt-logo">
+
+
+<img
+
+src="images/logo.png"
+
+alt="BurgerMan Logo">
+
+
+</div>
+
+
+
+
+
+<h1>
+
+BURGERMAN
+
+</h1>
+
+
+<p class="receipt-tagline">
+
+Taste the difference, one bite at a time
+
+</p>
+
+
+
+
+
+
+<hr>
+
+
+
+
+
+
+<!-- ORDER INFORMATION -->
+
+
+<div class="receipt-info">
+
+
+
+<div>
+
+
+<span>
+
+Token Number
+
+</span>
+
+
+<strong id="receiptToken">
+
+BM000
+
+</strong>
+
+
+</div>
+
+
+
+
+
+<div>
+
+
+<span>
+
+Date & Time
+
+</span>
+
+
+<strong id="receiptDate">
+
+-
+
+</strong>
+
+
+</div>
+
+
+
+
+<div>
+
+
+<span>
+
+Delivery Mode
+
+</span>
+
+
+<strong id="receiptDelivery">
+
+Dine-In
+
+</strong>
+
+
+</div>
+
+
+
+
+
+<div>
+
+
+<span>
+
+Payment
+
+</span>
+
+
+<strong id="receiptPayment">
+
+-
+
+</strong>
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+<hr>
+
+
+
+
+
+<!-- ======================
+     ITEMS TABLE
+======================= -->
+
+
+
+<table class="receipt-table">
+
+
+
+<thead>
+
+
+<tr>
+
+
+<th>
+
+Item
+
+</th>
+
+
+
+<th>
+
+Qty
+
+</th>
+
+
+
+<th>
+
+Amount
+
+</th>
+
+
+
+</tr>
+
+
+</thead>
+
+
+
+
+
+<tbody id="receiptItems">
+
+
+<!-- Items loaded by Javascript -->
+
+
+</tbody>
+
+
+
+
+
+</table>
+
+
+
+
+
+<hr>
+
+
+
+<!-- TOTAL SECTION -->
+
+
+<div class="receipt-total">
+
+
+<div>
+
+
+<span>
+
+Subtotal
+
+</span>
+
+
+
+<strong id="receiptSubtotal">
+
+₹0
+
+</strong>
+
+
+
+</div>
+
+
+
+
+<div>
+
+
+<span>
+
+GST (5%)
+
+</span>
+
+
+<strong id="receiptGST">
+
+₹0
+
+</strong>
+
+
+
+</div>
+
+
+
+
+<div class="grand-total">
+
+
+<span>
+
+Grand Total
+
+</span>
+
+
+<strong id="receiptGrandTotal">
+
+₹0
+
+</strong>
+
+
+</div>
+
+
+
+</div>
+        </div>
+
+
+
+
+        <!-- ==========================
+             THANK YOU MESSAGE
+        =========================== -->
+
+
+        <div class="receipt-message">
+
+
+            <h2>
+
+                Thank You For Ordering!
+
+            </h2>
+
+
+            <p>
+
+                Your delicious burgers are being prepared.
+
+            </p>
+
+
+        </div>
+
+
+
+
+
+
+        <!-- ==========================
+             RECEIPT ACTIONS
+        =========================== -->
+
+
+        <div class="receipt-actions">
+
+
+            <button
+
+                class="print-btn"
+
+                onclick="printReceipt()">
+
+
+                🖨 Print Receipt
+
+
+            </button>
+
+
+
+
+
+            <button
+
+                class="new-order-btn"
+
+                onclick="newOrder()">
+
+
+                🍔 New Order
+
+
+            </button>
+
+
+
+        </div>
+
+
+
+
+
+    </div>
+
+
+</section>
+
+
+
+
+
+
+
+<!-- ==========================
+     FOOTER
+=========================== -->
+
+
+<footer class="receipt-footer">
+
+
+    <p>
+
+        BURGERMAN | Fresh • Fast • Delicious
+
+    </p>
+
+
+</footer>
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+<script src="script.js"></script>
+
+
+
+
+<script>
+
+
+/*=====================================================
+ RECEIPT INITIALIZATION
+=====================================================*/
+
+
+document.addEventListener(
+
+"DOMContentLoaded",
+
+function(){
+
+
+    loadReceipt();
+
+
+});
+
+
+
+
+
+
+
+/*=====================================================
+ LOAD RECEIPT DATA
+=====================================================*/
+
+
+function loadReceipt(){
+
+
+
+    const orders =
+
+
+    JSON.parse(
+
+        localStorage.getItem(
+
+            "burgerOrders"
+
+        )
+
+    ) || [];
+
+
+
+
+
+    if(orders.length===0){
+
+
+        return;
+
+
+    }
+
+
+
+
+
+
+    const order =
+
+    orders[orders.length-1];
+
+
+
+
+
+
+
+
+    document.getElementById(
+
+        "receiptToken"
+
+    ).innerText =
+
+    order.token;
+
+
+
+
+
+
+
+    document.getElementById(
+
+        "receiptDate"
+
+    ).innerText =
+
+    order.dateTime || "-";
+
+
+
+
+
+
+
+    document.getElementById(
+
+        "receiptDelivery"
+
+    ).innerText =
+
+    order.deliveryMode;
+
+
+
+
+
+
+
+    document.getElementById(
+
+        "receiptPayment"
+
+    ).innerText =
+
+    order.paymentMethod;
+
+
+
+
+
+
+
+
+
+    const itemBody =
+
+    document.getElementById(
+
+        "receiptItems"
+
+    );
+
+
+
+    itemBody.innerHTML="";
+
+
+
+
+
+
+    let subtotal = 0;
+
+
+
+
+
+
+    order.items.forEach(item=>{
+
+
+
+        let itemTotal =
+
+        item.price *
+
+        item.quantity;
+
+
+
+
+
+        subtotal += itemTotal;
+
+
+
+
+
+
+        itemBody.innerHTML += `
+
+
+
+        <tr>
+
+
+
+            <td>
+
+                ${item.name}
+
+            </td>
+
+
+
+            <td>
+
+                ${item.quantity}
+
+            </td>
+
+
+
+            <td>
+
+                ₹${itemTotal}
+
+            </td>
+
+
+
+        </tr>
+
+
+
+        `;
+
+
+
+
+    });
+
+
+
+
+
+
+
+    let gst =
+
+    subtotal * 0.05;
+
+
+
+
+
+
+
+    let total =
+
+    subtotal + gst;
+
+
+
+
+
+
+
+
+    document.getElementById(
+
+        "receiptSubtotal"
+
+    ).innerText =
+
+    "₹" + subtotal.toFixed(2);
+
+
+
+
+
+
+
+    document.getElementById(
+
+        "receiptGST"
+
+    ).innerText =
+
+    "₹" + gst.toFixed(2);
+
+
+
+
+
+
+
+    document.getElementById(
+
+        "receiptGrandTotal"
+
+    ).innerText =
+
+    "₹" + total.toFixed(2);
+
+
+
+}
+
+
+
+
+
+
+
+
+
+/*=====================================================
+ PRINT RECEIPT
+=====================================================*/
+
+
+function printReceipt(){
+
+
+    window.print();
+
+
+}
+
+
+
+
+
+
+
+
+
+/*=====================================================
+ NEW ORDER
+=====================================================*/
+
+
+function newOrder(){
+
+
+
+    localStorage.removeItem(
+
+        "cart"
+
+    );
+
+
+
+    localStorage.removeItem(
+
+        "paymentMethod"
+
+    );
+
+
+
+    localStorage.setItem(
+
+        "deliveryMode",
+
+        "Dine-In"
+
+    );
+
+
+
+
+
+    window.location.href=
+
+    "menu.html";
+
+
+
+}
+
+
+
+
+</script>
+
+
+
+</body>
+
+
+</html>

@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Burgerman Orders</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+
+<div class="order-page">
+
+
+    <!-- Header -->
+
+    <header class="manager-header">
+
+
+        <div class="brand">
+
+            <h1>
+                BURGERMAN
+            </h1>
+
+            <p>
+                Order Management
+            </p>
+
+        </div>
+
+
+
+        <button 
+        class="back-btn"
+        onclick="goBackManager()">
+
+            ← Dashboard
+
+        </button>
+
+
+    </header>
+
+
+
+
+    <!-- Search -->
+
+    <section class="order-search">
+
+
+        <input 
+        type="text"
+        id="searchToken"
+        placeholder="Search Token Number">
+
+
+        <button onclick="searchOrder()">
+
+            Search
+
+        </button>
+
+
+        <button onclick="loadOrdersPage()">
+
+            Refresh
+
+        </button>
+
+
+    </section>
+
+
+
+
+
+
+    <!-- Orders Table -->
+
+
+    <section class="orders-container">
+
+
+        <h2>
+            Customer Orders
+        </h2>
+
+
+
+        <table>
+
+
+            <thead>
+
+
+                <tr>
+
+                    <th>
+                        Token
+                    </th>
+
+
+                    <th>
+                        Items
+                    </th>
+
+
+                    <th>
+                        Delivery Mode
+                    </th>
+
+
+                    <th>
+                        Payment
+                    </th>
+
+
+                    <th>
+                        Total
+                    </th>
+
+
+                    <th>
+                        Status
+                    </th>
+
+
+                    <th>
+                        Action
+                    </th>
+
+
+                </tr>
+
+
+            </thead>
+
+
+
+            <tbody id="ordersTableBody">
+
+
+                <!-- Orders loaded by manager.js -->
+
+
+            </tbody>
+
+
+
+        </table>
+
+
+    </section>
+
+
+
+</div>
+
+
+
+
+<script src="manager.js"></script>
+
+
+<script>
+
+
+// Load orders when page opens
+
+document.addEventListener(
+"DOMContentLoaded",
+function(){
+
+    loadOrdersPage();
+
+});
+
+
+
+
+
+function loadOrdersPage(){
+
+
+    const orders =
+    JSON.parse(
+        localStorage.getItem("burgerOrders")
+    ) || [];
+
+
+
+    const tbody =
+    document.getElementById(
+        "ordersTableBody"
+    );
+
+
+
+    tbody.innerHTML="";
+
+
+
+    orders.forEach(order=>{
+
+
+        let items="";
+
+
+
+        order.items.forEach(item=>{
+
+
+            items +=
+            `${item.name} x ${item.quantity}<br>`;
+
+
+        });
+
+
+
+
+        tbody.innerHTML += `
+
+
+        <tr>
+
+
+            <td>
+
+                ${order.token}
+
+            </td>
+
+
+
+            <td>
+
+                ${items}
+
+            </td>
+
+
+
+            <td>
+
+                ${order.deliveryMode}
+
+            </td>
+
+
+
+            <td>
+
+                ${order.paymentMethod}
+
+            </td>
+
+
+
+            <td>
+
+                ₹${order.total}
+
+            </td>
+
+
+
+            <td>
+
+
+                <select id="status-${order.token}">
+
+
+                    <option 
+                    ${order.deliveryStatus==="Preparing"?"selected":""}>
+                        Preparing
+                    </option>
+
+
+                    <option
+                    ${order.deliveryStatus==="Ready"?"selected":""}>
+                        Ready
+                    </option>
+
+
+                    <option
+                    ${order.deliveryStatus==="Completed"?"selected":""}>
+                        Completed
+                    </option>
+
+
+                </select>
+
+
+
+            </td>
+
+
+
+
+            <td>
+
+
+                <button
+                onclick="saveStatus('${order.token}')">
+
+                    Update
+
+                </button>
+
+
+            </td>
+
+
+
+        </tr>
+
+
+        `;
+
+
+
+    });
+
+
+}
+
+
+
+
+
+function saveStatus(token){
+
+
+    const status =
+    document.getElementById(
+        "status-" + token
+    ).value;
+
+
+
+    updateOrderStatus(
+        token,
+        status
+    );
+
+
+
+    alert(
+        "Order status updated"
+    );
+
+
+    loadOrdersPage();
+
+
+}
+
+
+
+
+
+function searchOrder(){
+
+
+    const token =
+    document.getElementById(
+        "searchToken"
+    ).value
+    .trim();
+
+
+
+    const rows =
+    document.querySelectorAll(
+        "#ordersTableBody tr"
+    );
+
+
+
+    rows.forEach(row=>{
+
+
+        if(
+            row.innerText.includes(token)
+            ||
+            token === ""
+        ){
+
+            row.style.display="";
+
+
+        }
+        else{
+
+
+            row.style.display="none";
+
+
+        }
+
+
+    });
+
+
+
+}
+
+
+
+
+
+function goBackManager(){
+
+
+    window.location.href =
+    "manager.html";
+
+
+}
+
+
+
+</script>
+
+
+</body>
+
+</html>

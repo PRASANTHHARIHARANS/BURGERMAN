@@ -1,0 +1,4578 @@
+/*=========================================================
+ BURGERMAN SELF ORDERING KIOSK
+ style.css
+ PART 1A-1
+ Global Theme + Home Page
+=========================================================*/
+
+
+/*=========================================================
+ GOOGLE FONT
+=========================================================*/
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+
+/*=========================================================
+ RESET
+=========================================================*/
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+
+html{
+    scroll-behavior:smooth;
+}
+
+
+body{
+
+    font-family:'Poppins',sans-serif;
+
+    background:#0d0d0d;
+
+    color:#ffffff;
+
+    overflow-x:hidden;
+
+}
+
+
+/*=========================================================
+ ROOT VARIABLES
+=========================================================*/
+
+:root{
+
+    --primary:#ff8300;
+
+    --primary-dark:#ff6500;
+
+    --secondary:#1a1a1a;
+
+    --card:#242424;
+
+    --border:#343434;
+
+    --white:#ffffff;
+
+    --light:#d8d8d8;
+
+    --success:#28c76f;
+
+    --danger:#ff4d4f;
+
+    --shadow:
+    0 15px 35px rgba(0,0,0,.35);
+
+    --radius:18px;
+
+    --transition:.35s ease;
+
+}
+
+
+/*=========================================================
+ SCROLLBAR
+=========================================================*/
+
+::-webkit-scrollbar{
+
+    width:10px;
+
+}
+
+
+::-webkit-scrollbar-track{
+
+    background:#111;
+
+}
+
+
+::-webkit-scrollbar-thumb{
+
+    background:var(--primary);
+
+    border-radius:20px;
+
+}
+
+
+::-webkit-scrollbar-thumb:hover{
+
+    background:var(--primary-dark);
+
+}
+
+
+/*=========================================================
+ COMMON ELEMENTS
+=========================================================*/
+
+img{
+
+    display:block;
+
+    max-width:100%;
+
+}
+
+
+button{
+
+    font-family:'Poppins',sans-serif;
+
+    cursor:pointer;
+
+    transition:var(--transition);
+
+}
+
+
+a{
+
+    text-decoration:none;
+
+}
+
+
+ul{
+
+    list-style:none;
+
+}
+
+
+/*=========================================================
+ SHARED PAGE BACKGROUND
+=========================================================*/
+
+.home-page,
+.menu-page,
+.cart-page,
+.payment-page,
+.receipt-page,
+.manager-page,
+.order-page,
+.transaction-page{
+
+    width:100%;
+
+    min-height:100vh;
+
+    background:
+
+    linear-gradient(
+
+        rgba(0,0,0,.85),
+
+        rgba(0,0,0,.88)
+
+    ),
+
+    url("images/background.jpg");
+
+    background-size:cover;
+
+    background-position:center;
+
+    background-attachment:fixed;
+
+}
+
+
+/*=========================================================
+ HOME PAGE
+=========================================================*/
+
+.home-page{
+
+    position:relative;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:30px 50px 40px;
+
+}
+
+
+/*=========================================================
+ LOGO
+=========================================================*/
+
+.brand-logo{
+
+    position:absolute;
+
+    top:25px;
+
+    right:35px;
+
+    width:90px;
+
+    height:90px;
+
+    object-fit:contain;
+
+}
+
+
+/*=========================================================
+ HERO SECTION
+=========================================================*/
+
+.hero-section{
+
+    width:100%;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    margin-top:70px;
+
+}
+
+
+/*=========================================================
+ HERO BURGER IMAGE
+=========================================================*/
+
+.hero-burger{
+
+    width:460px;
+
+    max-width:90%;
+
+    object-fit:contain;
+
+    animation:floatBurger 3s ease-in-out infinite;
+
+}
+
+
+/*=========================================================
+ BRAND NAME
+=========================================================*/
+
+.brand-name{
+
+    margin-top:20px;
+
+    font-size:58px;
+
+    font-weight:800;
+
+    letter-spacing:4px;
+
+    color:var(--white);
+
+    text-align:center;
+
+}
+
+
+/*=========================================================
+ TAGLINE
+=========================================================*/
+
+.tagline{
+
+    margin-top:12px;
+
+    color:#d9d9d9;
+
+    font-size:20px;
+
+    font-style:italic;
+
+    text-align:center;
+
+}
+
+
+/*=========================================================
+ MENU BUTTON SECTION
+=========================================================*/
+
+.menu-btn-container{
+
+    width:100%;
+
+    display:flex;
+
+    justify-content:center;
+
+    margin-top:60px;
+
+    margin-bottom:25px;
+
+}
+
+
+.menu-btn{
+
+    width:220px;
+
+    height:58px;
+
+    border:none;
+
+    border-radius:40px;
+
+    background:var(--primary);
+
+    color:white;
+
+    font-size:22px;
+
+    font-weight:700;
+
+    box-shadow:var(--shadow);
+
+    transition:var(--transition);
+
+}
+
+
+.menu-btn:hover{
+
+    background:var(--primary-dark);
+
+    transform:translateY(-3px);
+
+}
+
+
+/*=========================================================
+ COMMON ORANGE BUTTON
+=========================================================*/
+
+.primary-btn{
+
+    background:var(--primary);
+
+    color:white;
+
+    border:none;
+
+    border-radius:10px;
+
+    padding:12px 26px;
+
+    font-size:17px;
+
+    font-weight:600;
+
+}
+
+
+.primary-btn:hover{
+
+    background:var(--primary-dark);
+
+}
+
+
+/*=========================================================
+ SECTION TITLE
+=========================================================*/
+
+.page-title{
+
+    font-size:42px;
+
+    font-weight:700;
+
+    text-align:center;
+
+    margin-bottom:30px;
+
+}
+
+
+/*=========================================================
+ ANIMATIONS
+=========================================================*/
+
+@keyframes floatBurger{
+
+    0%{
+
+        transform:translateY(0px);
+
+    }
+
+    50%{
+
+        transform:translateY(-12px);
+
+    }
+
+    100%{
+
+        transform:translateY(0px);
+
+    }
+
+}
+
+
+@keyframes fadeIn{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(20px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+
+.fade-in{
+
+    animation:fadeIn .7s ease;
+
+}
+/*=========================================================
+ BURGERMAN SELF ORDERING KIOSK
+ style.css
+ PART 1A-2
+ Shared Layout + Headers + Category Buttons
+=========================================================*/
+
+
+/*=========================================================
+ SHARED PAGE CONTAINERS
+=========================================================*/
+
+.page-container,
+.content-container{
+
+    width:95%;
+
+    max-width:1400px;
+
+    margin:auto;
+
+}
+
+
+
+/*=========================================================
+ COMMON HEADER
+=========================================================*/
+
+.manager-header,
+.page-header{
+
+    width:100%;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:20px 35px;
+
+    background:#181818;
+
+    border-bottom:2px solid var(--primary);
+
+    box-shadow:var(--shadow);
+
+}
+
+
+
+/*=========================================================
+ BRAND
+=========================================================*/
+
+.brand{
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+
+
+.brand h1{
+
+    color:var(--primary);
+
+    font-size:34px;
+
+    font-weight:800;
+
+    letter-spacing:2px;
+
+}
+
+
+
+.brand p{
+
+    color:#cccccc;
+
+    font-size:15px;
+
+    margin-top:4px;
+
+}
+
+
+
+/*=========================================================
+ BACK BUTTON
+=========================================================*/
+
+.back-btn{
+
+    min-width:170px;
+
+    height:48px;
+
+    border:none;
+
+    border-radius:10px;
+
+    background:var(--primary);
+
+    color:white;
+
+    font-size:16px;
+
+    font-weight:600;
+
+}
+
+
+
+.back-btn:hover{
+
+    background:var(--primary-dark);
+
+}
+
+
+
+/*=========================================================
+ PAGE TITLES
+=========================================================*/
+
+.menu-title,
+.cart-title,
+.payment-title,
+.receipt-title,
+.order-title,
+.transaction-title{
+
+    text-align:center;
+
+    font-size:42px;
+
+    font-weight:700;
+
+    letter-spacing:2px;
+
+    margin:30px 0;
+
+}
+
+
+
+/*=========================================================
+ SECTION CARD
+=========================================================*/
+
+.section-card{
+
+    background:var(--card);
+
+    border-radius:18px;
+
+    padding:25px;
+
+    box-shadow:var(--shadow);
+
+}
+
+
+
+/*=========================================================
+ CATEGORY BUTTON AREA
+=========================================================*/
+
+/*=====================================
+ MENU CATEGORY BUTTONS
+=====================================*/
+
+
+.category-buttons{
+
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+gap:20px;
+
+
+margin:25px auto;
+
+
+flex-wrap:wrap;
+
+
+}
+
+
+
+
+
+
+.category-btn{
+
+
+width:180px;
+
+
+height:50px;
+
+
+background:#222;
+
+
+color:white;
+
+
+border:2px solid #ff8500;
+
+
+border-radius:12px;
+
+
+
+font-size:17px;
+
+
+font-weight:bold;
+
+
+cursor:pointer;
+
+
+
+transition:0.3s;
+
+
+}
+
+
+
+
+
+
+.category-btn:hover{
+
+
+background:#ff8500;
+
+
+color:white;
+
+
+transform:translateY(-3px);
+
+
+}
+
+
+
+
+
+
+.category-btn.active{
+
+
+background:#ff8500;
+
+
+color:white;
+
+
+box-shadow:0 0 10px rgba(255,133,0,0.6);
+
+
+}
+
+
+
+
+/*=========================================================
+ FLEX UTILITIES
+=========================================================*/
+
+.flex{
+
+    display:flex;
+
+}
+
+
+
+.flex-center{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+
+
+.flex-between{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+}
+
+
+
+.flex-column{
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+
+
+/*=========================================================
+ GRID UTILITIES
+=========================================================*/
+
+.grid{
+
+    display:grid;
+
+}
+
+
+
+.grid-2{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:25px;
+
+}
+
+
+
+.grid-3{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:25px;
+
+}
+
+
+
+.grid-4{
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:25px;
+
+}
+
+
+
+/*=========================================================
+ COMMON SPACING
+=========================================================*/
+
+.mt-10{margin-top:10px;}
+.mt-20{margin-top:20px;}
+.mt-30{margin-top:30px;}
+.mt-40{margin-top:40px;}
+
+.mb-10{margin-bottom:10px;}
+.mb-20{margin-bottom:20px;}
+.mb-30{margin-bottom:30px;}
+.mb-40{margin-bottom:40px;}
+
+
+
+/*=========================================================
+ TEXT UTILITIES
+=========================================================*/
+
+.text-center{
+
+    text-align:center;
+
+}
+
+
+
+.text-right{
+
+    text-align:right;
+
+}
+
+
+
+.text-primary{
+
+    color:var(--primary);
+
+}
+
+
+
+.text-success{
+
+    color:var(--success);
+
+}
+
+
+
+.text-danger{
+
+    color:var(--danger);
+
+}
+
+
+
+/*=========================================================
+ COMMON INPUT
+=========================================================*/
+
+input,
+select{
+
+    width:100%;
+
+    height:48px;
+
+    padding:0 15px;
+
+    border:1px solid var(--border);
+
+    border-radius:10px;
+
+    background:#1f1f1f;
+
+    color:white;
+
+    font-size:15px;
+
+    outline:none;
+
+}
+
+
+
+input:focus,
+select:focus{
+
+    border-color:var(--primary);
+
+}
+
+
+
+/*=========================================================
+ RESPONSIVE (HOME + HEADER)
+=========================================================*/
+
+@media(max-width:768px){
+
+    .manager-header,
+    .page-header{
+
+        flex-direction:column;
+
+        gap:15px;
+
+        text-align:center;
+
+    }
+
+    .brand-logo{
+
+        width:70px;
+
+        height:70px;
+
+        right:20px;
+
+    }
+
+    .brand-name{
+
+        font-size:40px;
+
+    }
+
+    .hero-burger{
+
+        width:320px;
+
+    }
+
+    .menu-btn{
+
+        width:180px;
+
+        height:52px;
+
+        font-size:18px;
+
+    }
+
+    .category{
+
+        min-width:150px;
+
+        font-size:15px;
+
+    }
+
+}
+/*=========================================================
+ BURGERMAN SELF ORDERING KIOSK
+ style.css
+ PART 2
+ MENU PAGE
+ Compatible with uploaded menu.html
+=========================================================*/
+
+
+/*=========================================================
+MENU PAGE
+=========================================================*/
+
+.menu-page{
+
+    width:100%;
+
+    min-height:100vh;
+
+    padding:40px 50px;
+
+    background:#101010;
+
+}
+
+
+
+/*=========================================================
+MENU TITLE
+=========================================================*/
+
+.menu-title{
+
+    text-align:center;
+
+    font-size:48px;
+
+    font-weight:700;
+
+    color:#ffffff;
+
+    letter-spacing:2px;
+
+    margin-bottom:35px;
+
+}
+
+
+
+/*=========================================================
+CATEGORY BUTTONS
+=========================================================*/
+
+.category-buttons{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    flex-wrap:wrap;
+
+    gap:18px;
+
+    margin-bottom:45px;
+
+}
+
+
+
+.category{
+
+    width:190px;
+
+    height:52px;
+
+    border:none;
+
+    border-radius:35px;
+
+    background:#2d2d2d;
+
+    color:#ffffff;
+
+    font-size:17px;
+
+    font-weight:600;
+
+    transition:.30s;
+
+    cursor:pointer;
+
+}
+
+
+
+.category:hover{
+
+    background:#ff8300;
+
+    transform:translateY(-2px);
+
+}
+
+
+
+.category.active{
+
+    background:#ff8300;
+
+    color:#fff;
+
+}
+
+
+
+/*=========================================================
+MENU GRID
+=========================================================*/
+
+.menu-grid{
+
+    width:100%;
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+
+    gap:35px;
+
+    align-items:start;
+
+}
+
+
+
+/*=========================================================
+BURGER CARD
+=========================================================*/
+
+.card{
+
+    background:#1b1b1b;
+
+    border-radius:18px;
+
+    overflow:hidden;
+
+    box-shadow:0 12px 30px rgba(0,0,0,.35);
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:space-between;
+
+    transition:.35s;
+
+    padding-bottom:20px;
+
+}
+
+
+
+.card:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:0 20px 45px rgba(0,0,0,.45);
+
+}
+
+
+
+/*=========================================================
+BURGER IMAGE
+=========================================================*/
+
+.card img{
+
+    width:100%;
+
+    height:220px;
+
+    object-fit:cover;
+
+}
+
+
+
+/*=========================================================
+BURGER NAME
+=========================================================*/
+
+.card h3{
+
+    text-align:center;
+
+    color:#ffffff;
+
+    font-size:23px;
+
+    font-weight:600;
+
+    margin:20px 15px 10px;
+
+    min-height:58px;
+
+}
+
+
+
+/*=========================================================
+PRICE
+=========================================================*/
+
+.card .price{
+
+    text-align:center;
+
+    color:#ff8300;
+
+    font-size:24px;
+
+    font-weight:700;
+
+    margin-bottom:18px;
+
+}
+
+
+
+/*=========================================================
+ADD TO CART BUTTON
+=========================================================*/
+
+.card button{
+
+    width:82%;
+
+    height:48px;
+
+    margin:auto;
+
+    border:none;
+
+    border-radius:10px;
+
+    background:#ff8300;
+
+    color:#ffffff;
+
+    font-size:16px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.30s;
+
+}
+
+
+
+.card button:hover{
+
+    background:#ff6200;
+
+}
+
+
+
+/*=========================================================
+CART BUTTON SECTION
+=========================================================*/
+
+.cart-button{
+
+    display:flex;
+
+    justify-content:center;
+
+    margin-top:55px;
+
+}
+
+
+
+.cart-button button{
+
+    width:280px;
+
+    height:58px;
+
+    border:none;
+
+    border-radius:35px;
+
+    background:#28a745;
+
+    color:#ffffff;
+
+    font-size:19px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:.30s;
+
+}
+
+
+
+.cart-button button:hover{
+
+    background:#208637;
+
+}
+
+
+
+/*=========================================================
+CATEGORY FILTER SUPPORT
+=========================================================*/
+
+.card{
+
+    display:flex;
+
+}
+
+
+
+/*=========================================================
+RESPONSIVE
+=========================================================*/
+
+@media(max-width:992px){
+
+.menu-grid{
+
+grid-template-columns:repeat(2,1fr);
+
+}
+
+}
+
+
+
+@media(max-width:768px){
+
+.menu-page{
+
+padding:25px;
+
+}
+
+.menu-grid{
+
+grid-template-columns:1fr;
+
+}
+
+.menu-title{
+
+font-size:36px;
+
+}
+
+.category{
+
+width:160px;
+
+font-size:15px;
+
+}
+
+.card img{
+
+height:200px;
+
+}
+
+}
+
+
+
+@media(max-width:480px){
+
+.category-buttons{
+
+flex-direction:column;
+
+}
+
+.category{
+
+width:220px;
+
+}
+
+.cart-button button{
+
+width:100%;
+
+}
+
+}
+/*=========================================================
+ BURGERMAN SELF ORDERING KIOSK
+ style.css
+ PART 3
+ CART PAGE
+ Compatible with regenerated cart.html
+=========================================================*/
+
+
+/*=========================================================
+ CART PAGE
+=========================================================*/
+
+.cart-page{
+
+    min-height:100vh;
+
+    background:#101010;
+
+    color:#ffffff;
+
+}
+
+
+
+/*=========================================================
+ CART TITLE
+=========================================================*/
+
+.cart-title{
+
+    text-align:center;
+
+    font-size:44px;
+
+    font-weight:700;
+
+    margin:35px 0;
+
+    letter-spacing:2px;
+
+}
+
+
+
+/*=========================================================
+ EMPTY CART
+=========================================================*/
+
+.empty-cart{
+
+    width:100%;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:60px 20px;
+
+    text-align:center;
+
+}
+
+
+
+.empty-cart img{
+
+    width:220px;
+
+    margin-bottom:25px;
+
+}
+
+
+
+.empty-cart h2{
+
+    font-size:34px;
+
+    margin-bottom:10px;
+
+}
+
+
+
+.empty-cart p{
+
+    color:#bdbdbd;
+
+    margin-bottom:25px;
+
+}
+
+
+
+/*=========================================================
+ CART CONTAINER
+=========================================================*/
+
+.cart-container{
+
+    width:95%;
+
+    max-width:1450px;
+
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:2fr 1fr;
+
+    gap:35px;
+
+    align-items:start;
+
+    padding-bottom:50px;
+
+}
+
+
+
+/*=========================================================
+ CART TABLE
+=========================================================*/
+
+.cart-table-container{
+
+    background:#1b1b1b;
+
+    border-radius:18px;
+
+    overflow:hidden;
+
+    box-shadow:0 15px 35px rgba(0,0,0,.35);
+
+}
+
+
+
+.cart-table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+}
+
+
+
+.cart-table thead{
+
+    background:#ff8300;
+
+}
+
+
+
+.cart-table th{
+
+    padding:18px;
+
+    color:#fff;
+
+    font-size:16px;
+
+    font-weight:600;
+
+}
+
+
+
+.cart-table td{
+
+    padding:18px;
+
+    text-align:center;
+
+    border-bottom:1px solid #2d2d2d;
+
+}
+
+
+
+/*=========================================================
+ CART IMAGE
+=========================================================*/
+
+.cart-image{
+
+    width:90px;
+
+    height:90px;
+
+    object-fit:cover;
+
+    border-radius:12px;
+
+}
+
+
+
+/*=========================================================
+ BURGER NAME
+=========================================================*/
+
+.item-name{
+
+    font-weight:600;
+
+    color:#fff;
+
+}
+
+
+
+/*=========================================================
+ PRICE
+=========================================================*/
+
+.item-price{
+
+    color:#ff8300;
+
+    font-weight:700;
+
+}
+
+
+
+/*=========================================================
+ QUANTITY BOX
+=========================================================*/
+
+.quantity-box{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:12px;
+
+}
+
+
+
+.qty-btn{
+
+    width:36px;
+
+    height:36px;
+
+    border:none;
+
+    border-radius:8px;
+
+    background:#ff8300;
+
+    color:#fff;
+
+    font-size:20px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:.30s;
+
+}
+
+
+
+.qty-btn:hover{
+
+    background:#ff6200;
+
+}
+
+
+
+.qty-value{
+
+    width:30px;
+
+    text-align:center;
+
+    font-size:18px;
+
+    font-weight:600;
+
+}
+
+
+
+/*=========================================================
+ REMOVE BUTTON
+=========================================================*/
+
+.remove-btn{
+
+    border:none;
+
+    border-radius:8px;
+
+    padding:10px 18px;
+
+    background:#dc3545;
+
+    color:#fff;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.30s;
+
+}
+
+
+
+.remove-btn:hover{
+
+    background:#b52b38;
+
+}
+
+
+
+/*=========================================================
+ ORDER SUMMARY
+=========================================================*/
+
+.order-summary{
+
+    background:#1b1b1b;
+
+    border-radius:18px;
+
+    padding:30px;
+
+    box-shadow:0 15px 35px rgba(0,0,0,.35);
+
+    position:sticky;
+
+    top:30px;
+
+}
+
+
+
+.order-summary h2{
+
+    text-align:center;
+
+    margin-bottom:25px;
+
+    color:#ff8300;
+
+}
+
+
+
+.summary-row{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin:18px 0;
+
+    font-size:17px;
+
+}
+
+
+
+.grand-total{
+
+    font-size:22px;
+
+    font-weight:700;
+
+    color:#ff8300;
+
+}
+
+
+
+/*=========================================================
+ DELIVERY MODE
+=========================================================*/
+
+.delivery-section{
+
+    margin-top:30px;
+
+}
+
+
+
+.delivery-section h3{
+
+    margin-bottom:15px;
+
+}
+
+
+
+.delivery-options{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:15px;
+
+}
+
+
+
+.delivery-option{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    cursor:pointer;
+
+    padding:12px;
+
+    border-radius:10px;
+
+    background:#252525;
+
+}
+
+
+
+.delivery-option input{
+
+    width:18px;
+
+    height:18px;
+
+}
+
+
+
+/*=========================================================
+ ACTION BUTTONS
+=========================================================*/
+
+.cart-actions{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:18px;
+
+    margin-top:30px;
+
+}
+
+
+
+.secondary-btn{
+
+    width:100%;
+
+    height:50px;
+
+    border:none;
+
+    border-radius:10px;
+
+    background:#555;
+
+    color:#fff;
+
+    font-size:16px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+}
+
+
+
+.secondary-btn:hover{
+
+    background:#666;
+
+}
+
+
+
+.cart-actions .primary-btn{
+
+    width:100%;
+
+    height:52px;
+
+}
+
+/*====================================
+ CART BURGER IMAGE
+====================================*/
+
+
+.cart-image{
+
+width:90px;
+
+height:90px;
+
+object-fit:cover;
+
+border-radius:12px;
+
+}
+
+/*=========================================================
+ FOOTER
+=========================================================*/
+
+.cart-footer{
+
+    margin-top:50px;
+
+    padding:20px;
+
+    text-align:center;
+
+    color:#bdbdbd;
+
+}
+
+
+
+/*=========================================================
+ RESPONSIVE
+=========================================================*/
+
+@media(max-width:1100px){
+
+.cart-container{
+
+grid-template-columns:1fr;
+
+}
+
+.order-summary{
+
+position:static;
+
+}
+
+}
+
+
+
+@media(max-width:768px){
+
+.cart-page{
+
+padding:15px;
+
+}
+
+.cart-table{
+
+display:block;
+
+overflow-x:auto;
+
+white-space:nowrap;
+
+}
+
+.cart-title{
+
+font-size:34px;
+
+}
+
+.cart-image{
+
+width:70px;
+
+height:70px;
+
+}
+
+}
+
+
+
+@media(max-width:480px){
+
+.summary-row{
+
+font-size:15px;
+
+}
+
+.grand-total{
+
+font-size:18px;
+
+}
+
+.cart-actions button{
+
+font-size:15px;
+
+}
+
+}
+/*=========================================================
+ BURGERMAN SELF ORDERING KIOSK
+ style.css
+ PART 4
+ PAYMENT PAGE
+ Compatible with payment.html
+=========================================================*/
+
+/*=====================================================
+   PAYMENT PAGE
+=====================================================*/
+
+
+.payment-page{
+
+min-height:100vh;
+
+background:#111;
+
+color:white;
+
+padding:20px;
+
+font-family:Arial, sans-serif;
+
+}
+
+
+
+
+
+/*=============================
+ PAYMENT HEADER
+=============================*/
+
+
+.payment-header{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+margin-bottom:25px;
+
+}
+
+
+
+
+
+.payment-header .brand h1{
+
+font-size:32px;
+
+margin:0;
+
+color:#ff8500;
+
+}
+
+
+
+
+
+.payment-header .brand p{
+
+margin-top:5px;
+
+font-size:16px;
+
+color:#ddd;
+
+}
+
+
+
+
+
+/*=============================
+ ORDER SUMMARY
+=============================*/
+
+
+.payment-summary{
+
+background:#1c1c1c;
+
+padding:20px;
+
+border-radius:15px;
+
+margin-bottom:25px;
+
+}
+
+
+
+
+
+.payment-summary h2{
+
+text-align:center;
+
+font-size:26px;
+
+margin-bottom:20px;
+
+}
+
+
+
+
+
+.payment-item{
+
+display:flex;
+
+justify-content:space-between;
+
+padding:12px 0;
+
+border-bottom:1px solid #444;
+
+font-size:17px;
+
+}
+
+
+
+
+
+.payment-total{
+
+margin-top:20px;
+
+text-align:right;
+
+font-size:24px;
+
+font-weight:bold;
+
+color:#ff8500;
+
+}
+
+
+
+
+
+
+
+/*=====================================================
+ PAYMENT METHOD OPTIONS
+=====================================================*/
+
+
+.payment-method-section{
+
+background:#1c1c1c;
+
+padding:25px;
+
+border-radius:15px;
+
+}
+
+
+
+
+
+.payment-method-section h2{
+
+font-size:24px;
+
+margin-bottom:20px;
+
+text-align:center;
+
+}
+
+
+
+
+
+
+
+/*
+   Radio Button Container
+*/
+
+
+.payment-options{
+
+display:flex;
+
+flex-direction:column;
+
+gap:18px;
+
+align-items:flex-start;
+
+padding-left:20px;
+
+}
+
+
+
+
+
+
+
+/*
+   Individual Payment Option
+*/
+
+
+.payment-option{
+
+
+display:flex;
+
+align-items:center;
+
+gap:12px;
+
+font-size:18px;
+
+font-weight:600;
+
+cursor:pointer;
+
+}
+
+
+
+
+
+
+
+
+/*
+   Small Radio Button
+*/
+
+
+.payment-option input[type="radio"]{
+
+
+width:18px;
+
+height:18px;
+
+margin:0;
+
+cursor:pointer;
+
+accent-color:#ff8500;
+
+
+}
+
+
+
+
+
+
+
+
+.payment-option span{
+
+
+font-size:18px;
+
+color:white;
+
+
+}
+
+
+
+
+
+
+
+
+
+/*=====================================================
+ UPI SECTION
+=====================================================*/
+
+
+.upi-section{
+
+
+display:none;
+
+background:#222;
+
+padding:20px;
+
+margin-top:20px;
+
+border-radius:12px;
+
+text-align:center;
+
+}
+
+
+
+
+
+.qr-code{
+
+
+width:180px;
+
+height:180px;
+
+margin-top:15px;
+
+
+}
+
+
+
+
+
+
+
+
+
+/*=====================================================
+ CARD SECTION
+=====================================================*/
+
+
+.card-section{
+
+
+display:none;
+
+background:#222;
+
+padding:20px;
+
+margin-top:20px;
+
+border-radius:12px;
+
+text-align:center;
+
+}
+
+
+
+
+
+.card-machine{
+
+
+width:220px;
+
+margin-top:15px;
+
+
+}
+
+
+
+
+
+
+
+
+
+/*=====================================================
+ PAY NOW BUTTON
+=====================================================*/
+
+
+/*========================================
+ PAY NOW BUTTON
+========================================*/
+
+
+.pay-now-container{
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+width:100%;
+
+margin-top:35px;
+
+}
+
+
+
+
+.pay-now-btn{
+
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+
+width:220px;
+
+height:55px;
+
+
+background:#ff8500;
+
+
+color:white;
+
+
+border:none;
+
+
+border-radius:12px;
+
+
+
+font-size:20px;
+
+
+font-weight:bold;
+
+
+letter-spacing:1px;
+
+
+
+cursor:pointer;
+
+
+
+text-align:center;
+
+
+
+padding:0;
+
+
+
+transition:0.3s;
+
+
+
+}
+
+
+
+
+.pay-now-btn:hover{
+
+
+background:#ff9d33;
+
+
+transform:scale(1.05);
+
+
+}
+
+
+
+.pay-now-btn:active{
+
+
+transform:scale(0.98);
+
+
+}
+
+/*=========================================================
+ PAYMENT MESSAGE
+=========================================================*/
+
+.payment-message{
+
+    width:350px;
+
+    margin:20px auto;
+
+    background:#28a745;
+
+    color:white;
+
+    text-align:center;
+
+    padding:20px;
+
+    border-radius:15px;
+
+    font-size:18px;
+
+    font-weight:600;
+
+}
+
+
+
+/*=========================================================
+ FOOTER
+=========================================================*/
+
+.payment-footer{
+
+    text-align:center;
+
+    padding:25px;
+
+    color:#aaa;
+
+}
+
+
+
+/*=========================================================
+ RESPONSIVE
+=========================================================*/
+
+@media(max-width:900px){
+
+
+.payment-container{
+
+
+    grid-template-columns:1fr;
+
+
+}
+
+
+}
+
+
+
+@media(max-width:600px){
+
+
+.payment-title{
+
+
+    font-size:34px;
+
+
+}
+
+
+.payment-container{
+
+
+    width:95%;
+
+
+}
+
+
+.payment-summary,
+.payment-methods{
+
+
+    padding:20px;
+
+
+}
+
+
+.qr-code{
+
+
+    width:180px;
+
+    height:180px;
+
+
+}
+
+
+}
+/*=========================================================
+ BURGERMAN SELF ORDERING KIOSK
+ style.css
+ PART 5
+ RECEIPT PAGE
+ Compatible with receipt.html
+=========================================================*/
+
+
+/*=========================================================
+ RECEIPT PAGE
+=========================================================*/
+
+.receipt-page{
+
+    min-height:100vh;
+
+    background:#101010;
+
+    color:#ffffff;
+
+}
+
+
+
+/*=========================================================
+ RECEIPT CONTAINER
+=========================================================*/
+
+.receipt-container{
+
+    width:100%;
+
+    display:flex;
+
+    justify-content:center;
+
+    padding:40px 20px;
+
+}
+
+
+
+/*=========================================================
+ RECEIPT CARD
+=========================================================*/
+
+.receipt-card{
+
+    width:420px;
+
+    background:#ffffff;
+
+    color:#111111;
+
+    border-radius:18px;
+
+    padding:35px;
+
+    box-shadow:0 20px 50px rgba(0,0,0,.45);
+
+}
+
+
+
+/*=========================================================
+ RECEIPT LOGO
+=========================================================*/
+
+.receipt-logo{
+
+    display:flex;
+
+    justify-content:center;
+
+    margin-bottom:15px;
+
+}
+
+
+
+.receipt-logo img{
+
+    width:90px;
+
+    height:90px;
+
+    object-fit:contain;
+
+}
+
+
+
+/*=========================================================
+ RECEIPT BRAND
+=========================================================*/
+
+.receipt-card h1{
+
+    text-align:center;
+
+    font-size:32px;
+
+    letter-spacing:2px;
+
+    color:#ff8300;
+
+}
+
+
+
+.receipt-tagline{
+
+    text-align:center;
+
+    font-size:14px;
+
+    color:#555;
+
+    margin-bottom:20px;
+
+}
+
+
+
+/*=========================================================
+ RECEIPT INFORMATION
+=========================================================*/
+
+.receipt-info{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:12px;
+
+}
+
+
+
+.receipt-info div{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    font-size:15px;
+
+}
+
+
+
+.receipt-info span{
+
+    color:#555;
+
+}
+
+
+
+.receipt-info strong{
+
+    font-weight:700;
+
+}
+
+
+
+/*=========================================================
+ RECEIPT TABLE
+=========================================================*/
+
+.receipt-table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+    margin:20px 0;
+
+}
+
+
+
+.receipt-table th{
+
+    text-align:left;
+
+    border-bottom:2px solid #222;
+
+    padding:10px 0;
+
+    font-size:14px;
+
+}
+
+
+
+.receipt-table td{
+
+    padding:10px 0;
+
+    border-bottom:1px dashed #aaa;
+
+    font-size:14px;
+
+}
+
+
+
+.receipt-table th:nth-child(2),
+.receipt-table td:nth-child(2){
+
+    text-align:center;
+
+}
+
+
+
+.receipt-table th:nth-child(3),
+.receipt-table td:nth-child(3){
+
+    text-align:right;
+
+}
+
+
+
+/*=========================================================
+ TOTAL SECTION
+=========================================================*/
+
+.receipt-total{
+
+    margin-top:20px;
+
+}
+
+
+
+.receipt-total > div{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    margin:12px 0;
+
+    font-size:16px;
+
+}
+
+
+
+.receipt-total .grand-total{
+
+    font-size:22px;
+
+    font-weight:700;
+
+    color:#ff8300;
+
+}
+
+
+
+/*=========================================================
+ THANK YOU MESSAGE
+=========================================================*/
+
+.receipt-message{
+
+    text-align:center;
+
+    margin-top:25px;
+
+}
+
+
+
+.receipt-message h2{
+
+    font-size:20px;
+
+}
+
+
+
+.receipt-message p{
+
+    color:#555;
+
+    font-size:14px;
+
+}
+
+
+
+/*=========================================================
+ RECEIPT BUTTONS
+=========================================================*/
+
+.receipt-actions{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:15px;
+
+    margin-top:30px;
+
+}
+
+
+
+.print-btn,
+.new-order-btn{
+
+    width:100%;
+
+    height:50px;
+
+    border:none;
+
+    border-radius:25px;
+
+    font-size:17px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+
+
+.print-btn{
+
+    background:#ff8300;
+
+    color:white;
+
+}
+
+
+
+.print-btn:hover{
+
+    background:#ff6200;
+
+}
+
+
+
+.new-order-btn{
+
+    background:#28a745;
+
+    color:white;
+
+}
+
+
+
+.new-order-btn:hover{
+
+    background:#218838;
+
+}
+
+
+
+/*=========================================================
+ FOOTER
+=========================================================*/
+
+.receipt-footer{
+
+    text-align:center;
+
+    padding:25px;
+
+    color:#aaa;
+
+}
+
+
+
+/*=========================================================
+ PRINT MODE
+=========================================================*/
+
+@media print{
+
+
+body{
+
+    background:white;
+
+}
+
+
+
+.receipt-page{
+
+    background:white;
+
+}
+
+
+
+.page-header,
+.receipt-actions,
+.receipt-footer{
+
+    display:none;
+
+}
+
+
+
+.receipt-card{
+
+    box-shadow:none;
+
+    border-radius:0;
+
+}
+
+
+
+}
+
+
+
+
+
+
+/*=========================================================
+ MOBILE RESPONSIVE
+=========================================================*/
+
+@media(max-width:500px){
+
+
+.receipt-card{
+
+    width:100%;
+
+    padding:25px;
+
+}
+
+
+
+.receipt-card h1{
+
+    font-size:26px;
+
+}
+
+
+
+}
+/*=========================================================
+ BURGERMAN SELF ORDERING KIOSK
+ style.css
+ PART 6
+ MANAGER DASHBOARD
+ Compatible with manager.html + manager.js
+=========================================================*/
+
+
+/*=========================================================
+ MANAGER PAGE
+=========================================================*/
+
+.manager-page{
+
+    min-height:100vh;
+
+    background:#101010;
+
+    color:white;
+
+    padding-bottom:40px;
+
+}
+
+
+
+/*=========================================================
+ MANAGER HEADER
+=========================================================*/
+
+.manager-header{
+
+    width:100%;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:25px 40px;
+
+    background:#181818;
+
+    border-bottom:2px solid #ff8300;
+
+}
+
+
+
+/*=========================================================
+ MANAGER BRAND
+=========================================================*/
+
+.manager-header .brand h1{
+
+    color:#ff8300;
+
+    font-size:36px;
+
+    letter-spacing:2px;
+
+}
+
+
+
+.manager-header .brand p{
+
+    color:#cccccc;
+
+    margin-top:5px;
+
+}
+
+
+
+/*=========================================================
+ DASHBOARD CONTAINER
+=========================================================*/
+
+.manager-container{
+
+    width:90%;
+
+    max-width:1300px;
+
+    margin:40px auto;
+
+}
+
+
+
+/*=========================================================
+ DASHBOARD TITLE
+=========================================================*/
+
+.manager-title{
+
+    text-align:center;
+
+    font-size:42px;
+
+    margin-bottom:40px;
+
+}
+
+
+
+/*=========================================================
+ SUMMARY CARDS AREA
+=========================================================*/
+
+.dashboard-summary{
+
+    display:grid;
+
+    grid-template-columns:
+
+    repeat(3,1fr);
+
+    gap:30px;
+
+    margin-bottom:45px;
+
+}
+
+
+
+/*=========================================================
+ DASHBOARD CARD
+=========================================================*/
+
+.dashboard-card{
+
+    background:#1b1b1b;
+
+    border-radius:18px;
+
+    padding:30px;
+
+    text-align:center;
+
+    box-shadow:
+
+    0 15px 35px rgba(0,0,0,.35);
+
+    transition:.3s;
+
+}
+
+
+
+.dashboard-card:hover{
+
+    transform:translateY(-8px);
+
+}
+
+
+
+.dashboard-card h3{
+
+    color:#cccccc;
+
+    font-size:18px;
+
+    margin-bottom:15px;
+
+}
+
+
+
+.dashboard-card p{
+
+    font-size:38px;
+
+    font-weight:700;
+
+    color:#ff8300;
+
+}
+
+
+
+/*=========================================================
+ MANAGER ACTION BUTTONS
+=========================================================*/
+
+.manager-actions{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:30px;
+
+    flex-wrap:wrap;
+
+}
+
+
+
+/*=========================================================
+ MANAGER BUTTONS
+=========================================================*/
+
+.manager-btn{
+
+    width:260px;
+
+    height:65px;
+
+    border:none;
+
+    border-radius:35px;
+
+    background:#ff8300;
+
+    color:white;
+
+    font-size:18px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+
+
+.manager-btn:hover{
+
+    background:#ff6200;
+
+    transform:translateY(-3px);
+
+}
+
+
+
+/*=========================================================
+ SECONDARY MANAGER BUTTON
+=========================================================*/
+
+.manager-btn.secondary{
+
+    background:#28a745;
+
+}
+
+
+
+.manager-btn.secondary:hover{
+
+    background:#218838;
+
+}
+
+
+
+/*=========================================================
+ RECENT ORDERS SECTION
+=========================================================*/
+
+.recent-orders{
+
+    margin-top:45px;
+
+    background:#1b1b1b;
+
+    border-radius:18px;
+
+    padding:30px;
+
+}
+
+
+
+.recent-orders h2{
+
+    color:#ff8300;
+
+    text-align:center;
+
+    margin-bottom:25px;
+
+}
+
+
+
+/*=========================================================
+ TABLE COMMON STYLE
+=========================================================*/
+
+table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+}
+
+
+
+thead{
+
+    background:#ff8300;
+
+}
+
+
+
+th{
+
+    padding:15px;
+
+    color:white;
+
+    font-size:15px;
+
+}
+
+
+
+td{
+
+    padding:15px;
+
+    text-align:center;
+
+    border-bottom:1px solid #333;
+
+}
+
+
+
+/*=========================================================
+ STATUS COLORS
+=========================================================*/
+
+.status-preparing{
+
+    color:#ffc107;
+
+    font-weight:700;
+
+}
+
+
+
+.status-ready{
+
+    color:#28a745;
+
+    font-weight:700;
+
+}
+
+
+
+.status-completed{
+
+    color:#17a2b8;
+
+    font-weight:700;
+
+}
+
+
+
+/*=========================================================
+ RESPONSIVE
+=========================================================*/
+
+@media(max-width:900px){
+
+
+.dashboard-summary{
+
+
+grid-template-columns:1fr;
+
+
+}
+
+
+
+.manager-header{
+
+
+flex-direction:column;
+
+gap:20px;
+
+
+}
+
+
+}
+
+
+
+@media(max-width:600px){
+
+
+.manager-title{
+
+
+font-size:32px;
+
+
+}
+
+
+
+.manager-container{
+
+
+width:95%;
+
+
+}
+
+
+
+.manager-btn{
+
+
+width:100%;
+
+
+}
+
+
+}
+/*=========================================================
+ BURGERMAN SELF ORDERING KIOSK
+ style.css
+ PART 7
+ MANAGER ORDER MANAGEMENT PAGE
+ Compatible with order.html
+=========================================================*/
+
+
+/*=========================================================
+ ORDER PAGE
+=========================================================*/
+
+.order-page{
+
+    min-height:100vh;
+
+    background:#101010;
+
+    color:#ffffff;
+
+    padding-bottom:50px;
+
+}
+
+
+
+/*=========================================================
+ ORDER HEADER
+=========================================================*/
+
+.order-page .manager-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:25px 40px;
+
+    background:#181818;
+
+    border-bottom:2px solid #ff8300;
+
+}
+
+
+
+/*=========================================================
+ SEARCH SECTION
+=========================================================*/
+
+.order-search{
+
+    width:90%;
+
+    max-width:1100px;
+
+    margin:35px auto;
+
+    display:flex;
+
+    gap:15px;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+
+
+/*=========================================================
+ SEARCH INPUT
+=========================================================*/
+
+.order-search input{
+
+    width:350px;
+
+    height:50px;
+
+    padding:0 18px;
+
+    border-radius:10px;
+
+    border:1px solid #444;
+
+    background:#1f1f1f;
+
+    color:white;
+
+    font-size:16px;
+
+}
+
+
+
+.order-search input:focus{
+
+    border-color:#ff8300;
+
+    outline:none;
+
+}
+
+
+
+/*=========================================================
+ SEARCH BUTTONS
+=========================================================*/
+
+.order-search button{
+
+    height:50px;
+
+    padding:0 25px;
+
+    border:none;
+
+    border-radius:10px;
+
+    background:#ff8300;
+
+    color:white;
+
+    font-size:16px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+
+
+.order-search button:hover{
+
+    background:#ff6200;
+
+}
+
+
+
+
+
+/*=========================================================
+ ORDERS CONTAINER
+=========================================================*/
+
+.orders-container{
+
+    width:95%;
+
+    max-width:1400px;
+
+    margin:auto;
+
+    background:#1b1b1b;
+
+    padding:30px;
+
+    border-radius:18px;
+
+    box-shadow:
+
+    0 15px 35px rgba(0,0,0,.35);
+
+}
+
+
+
+.orders-container h2{
+
+    text-align:center;
+
+    color:#ff8300;
+
+    font-size:30px;
+
+    margin-bottom:25px;
+
+}
+
+
+
+
+
+/*=========================================================
+ ORDERS TABLE
+=========================================================*/
+
+.orders-container table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+    overflow:hidden;
+
+}
+
+
+
+.orders-container thead{
+
+    background:#ff8300;
+
+}
+
+
+
+.orders-container th{
+
+    padding:18px;
+
+    font-size:15px;
+
+    color:white;
+
+}
+
+
+
+.orders-container td{
+
+    padding:18px;
+
+    text-align:center;
+
+    color:#eeeeee;
+
+    border-bottom:1px solid #333;
+
+}
+
+
+
+/*=========================================================
+ ORDER ITEMS DISPLAY
+=========================================================*/
+
+.orders-container td:nth-child(2){
+
+    text-align:left;
+
+    line-height:1.7;
+
+}
+
+
+
+
+
+/*=========================================================
+ STATUS DROPDOWN
+=========================================================*/
+
+.orders-container select{
+
+    width:150px;
+
+    height:40px;
+
+    border-radius:8px;
+
+    border:1px solid #555;
+
+    background:#252525;
+
+    color:white;
+
+    padding:0 10px;
+
+}
+
+
+
+.orders-container select:focus{
+
+    border-color:#ff8300;
+
+}
+
+
+
+
+
+/*=========================================================
+ UPDATE BUTTON
+=========================================================*/
+
+.orders-container button{
+
+    height:40px;
+
+    padding:0 20px;
+
+    border:none;
+
+    border-radius:8px;
+
+    background:#28a745;
+
+    color:white;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+
+
+.orders-container button:hover{
+
+    background:#218838;
+
+}
+
+
+
+
+
+/*=========================================================
+ TOKEN STYLE
+=========================================================*/
+
+.orders-container td:first-child{
+
+    color:#ff8300;
+
+    font-weight:700;
+
+    font-size:18px;
+
+}
+
+
+
+/*=========================================================
+ EMPTY ORDERS
+=========================================================*/
+
+.empty-orders{
+
+    text-align:center;
+
+    padding:40px;
+
+    color:#aaa;
+
+}
+
+
+
+
+
+/*=========================================================
+ RESPONSIVE
+=========================================================*/
+
+@media(max-width:1000px){
+
+
+.order-search{
+
+
+flex-direction:column;
+
+
+}
+
+
+
+.order-search input{
+
+
+width:100%;
+
+
+}
+
+
+
+.orders-container{
+
+
+overflow-x:auto;
+
+
+}
+
+
+
+.orders-container table{
+
+
+min-width:900px;
+
+
+}
+
+
+}
+
+
+
+
+@media(max-width:600px){
+
+
+.order-page .manager-header{
+
+
+flex-direction:column;
+
+
+gap:20px;
+
+
+}
+
+
+
+.order-search button{
+
+
+width:100%;
+
+
+}
+
+
+
+.orders-container{
+
+
+padding:20px;
+
+
+}
+
+
+}
+/*=========================================================
+ BURGERMAN SELF ORDERING KIOSK
+ style.css
+ PART 8
+ MANAGER TRANSACTION HISTORY PAGE
+ Compatible with transaction.html
+=========================================================*/
+
+
+/*=========================================================
+ TRANSACTION PAGE
+=========================================================*/
+
+.transaction-page{
+
+    min-height:100vh;
+
+    background:#101010;
+
+    color:#ffffff;
+
+    padding-bottom:50px;
+
+}
+
+
+
+
+
+/*=========================================================
+ HEADER
+=========================================================*/
+
+.transaction-page .manager-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:25px 40px;
+
+    background:#181818;
+
+    border-bottom:2px solid #ff8300;
+
+}
+
+
+
+
+/*=========================================================
+ TRANSACTION SUMMARY SECTION
+=========================================================*/
+
+.transaction-summary{
+
+    width:90%;
+
+    max-width:1200px;
+
+    margin:40px auto;
+
+    display:grid;
+
+    grid-template-columns:
+
+    repeat(3,1fr);
+
+    gap:30px;
+
+}
+
+
+
+
+/*=========================================================
+ SUMMARY CARDS
+=========================================================*/
+
+.transaction-summary .dashboard-card{
+
+    background:#1b1b1b;
+
+    border-radius:18px;
+
+    padding:30px;
+
+    text-align:center;
+
+    box-shadow:
+
+    0 15px 35px rgba(0,0,0,.35);
+
+    transition:.3s;
+
+}
+
+
+
+.transaction-summary .dashboard-card:hover{
+
+    transform:translateY(-8px);
+
+}
+
+
+
+
+.transaction-summary h3{
+
+    color:#cccccc;
+
+    font-size:18px;
+
+    margin-bottom:15px;
+
+}
+
+
+
+
+.transaction-summary p{
+
+    font-size:36px;
+
+    font-weight:700;
+
+    color:#ff8300;
+
+}
+
+
+
+
+
+
+/*=========================================================
+ TRANSACTIONS CONTAINER
+=========================================================*/
+
+.transactions-container{
+
+    width:95%;
+
+    max-width:1400px;
+
+    margin:auto;
+
+    background:#1b1b1b;
+
+    border-radius:18px;
+
+    padding:30px;
+
+    box-shadow:
+
+    0 15px 35px rgba(0,0,0,.35);
+
+}
+
+
+
+
+
+.transactions-container h2{
+
+    text-align:center;
+
+    color:#ff8300;
+
+    font-size:30px;
+
+    margin-bottom:30px;
+
+}
+
+
+
+
+
+
+/*=========================================================
+ TRANSACTION TABLE
+=========================================================*/
+
+.transactions-container table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+}
+
+
+
+
+
+.transactions-container thead{
+
+    background:#ff8300;
+
+}
+
+
+
+
+
+.transactions-container th{
+
+    padding:18px;
+
+    font-size:15px;
+
+    color:white;
+
+}
+
+
+
+
+
+.transactions-container td{
+
+    padding:18px;
+
+    text-align:center;
+
+    border-bottom:1px solid #333;
+
+    color:#eeeeee;
+
+}
+
+
+
+
+
+/*=========================================================
+ TOKEN COLUMN
+=========================================================*/
+
+.transactions-container td:first-child{
+
+    color:#ff8300;
+
+    font-weight:700;
+
+    font-size:18px;
+
+}
+
+
+
+
+
+
+/*=========================================================
+ PAYMENT STATUS
+=========================================================*/
+
+
+.payment-paid{
+
+    color:#28a745;
+
+    font-weight:700;
+
+}
+
+
+
+.payment-pending{
+
+    color:#ffc107;
+
+    font-weight:700;
+
+}
+
+
+
+.payment-failed{
+
+    color:#dc3545;
+
+    font-weight:700;
+
+}
+
+
+
+
+
+
+
+/*=========================================================
+ AMOUNT COLUMN
+=========================================================*/
+
+
+.transactions-container td:last-child{
+
+    color:#ff8300;
+
+    font-weight:700;
+
+}
+
+
+
+
+
+
+/*=========================================================
+ EMPTY TRANSACTIONS
+=========================================================*/
+
+.empty-transactions{
+
+    text-align:center;
+
+    padding:40px;
+
+    color:#aaaaaa;
+
+}
+
+
+
+
+
+/*=========================================================
+ SCROLL SUPPORT
+=========================================================*/
+
+
+.transactions-container{
+
+    overflow-x:auto;
+
+}
+
+
+
+
+
+
+
+/*=========================================================
+ RESPONSIVE DESIGN
+=========================================================*/
+
+
+@media(max-width:1000px){
+
+
+.transaction-summary{
+
+
+grid-template-columns:1fr;
+
+
+}
+
+
+
+.transactions-container table{
+
+
+min-width:900px;
+
+
+}
+
+
+
+}
+
+
+
+
+@media(max-width:600px){
+
+
+.transaction-page .manager-header{
+
+
+flex-direction:column;
+
+
+gap:20px;
+
+
+}
+
+
+
+.transaction-summary{
+
+
+width:95%;
+
+
+}
+
+
+
+.transactions-container{
+
+
+padding:20px;
+
+
+}
+
+
+}
+/*=====================================
+ CART ADD SUCCESS DIALOG
+=====================================*/
+
+
+.cart-dialog{
+
+
+position:fixed;
+
+
+top:0;
+
+left:0;
+
+
+width:100%;
+
+height:100%;
+
+
+background:rgba(0,0,0,0.65);
+
+
+display:flex;
+
+
+justify-content:center;
+
+
+align-items:center;
+
+
+z-index:9999;
+
+
+}
+
+
+
+
+
+
+.dialog-box{
+
+
+width:350px;
+
+
+background:white;
+
+
+color:#222;
+
+
+padding:30px;
+
+
+border-radius:15px;
+
+
+text-align:center;
+
+
+box-shadow:0 10px 30px rgba(0,0,0,0.5);
+
+
+animation:popup .3s ease;
+
+
+}
+
+
+
+
+
+.dialog-box h3{
+
+
+font-size:24px;
+
+
+color:#ff8500;
+
+
+margin-bottom:15px;
+
+
+}
+
+
+
+
+
+.dialog-box p{
+
+
+font-size:18px;
+
+
+margin-bottom:25px;
+
+
+}
+
+
+
+
+
+.dialog-box button{
+
+
+width:120px;
+
+
+height:45px;
+
+
+background:#ff8500;
+
+
+border:none;
+
+
+border-radius:8px;
+
+
+color:white;
+
+
+font-size:18px;
+
+
+font-weight:bold;
+
+
+cursor:pointer;
+
+
+}
+
+
+
+
+
+
+.dialog-box button:hover{
+
+
+background:#ff9d33;
+
+
+}
+
+
+
+
+
+@keyframes popup{
+
+
+from{
+
+transform:scale(0.7);
+
+opacity:0;
+
+}
+
+
+to{
+
+transform:scale(1);
+
+opacity:1;
+
+}
+
+
+}

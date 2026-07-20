@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Burgerman Transactions</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+
+<div class="transaction-page">
+
+
+    <!-- Header -->
+
+    <header class="manager-header">
+
+
+        <div class="brand">
+
+            <h1>
+                BURGERMAN
+            </h1>
+
+            <p>
+                Transaction History
+            </p>
+
+        </div>
+
+
+
+        <button 
+        class="back-btn"
+        onclick="goBackManager()">
+
+            ← Dashboard
+
+        </button>
+
+
+    </header>
+
+
+
+
+
+    <!-- Summary Cards -->
+
+
+    <section class="transaction-summary">
+
+
+        <div class="dashboard-card">
+
+
+            <h3>
+                Total Transactions
+            </h3>
+
+
+            <p id="transactionCount">
+                0
+            </p>
+
+
+        </div>
+
+
+
+
+        <div class="dashboard-card">
+
+
+            <h3>
+                Total Revenue
+            </h3>
+
+
+            <p id="transactionRevenue">
+                ₹0
+            </p>
+
+
+        </div>
+
+
+
+        <div class="dashboard-card">
+
+
+            <h3>
+                Paid Orders
+            </h3>
+
+
+            <p id="paidOrders">
+                0
+            </p>
+
+
+        </div>
+
+
+
+    </section>
+
+
+
+
+
+
+
+    <!-- Transaction Table -->
+
+
+    <section class="transactions-container">
+
+
+        <h2>
+            Payment Transactions
+        </h2>
+
+
+
+
+        <table>
+
+
+            <thead>
+
+
+                <tr>
+
+
+                    <th>
+                        Token
+                    </th>
+
+
+                    <th>
+                        Date & Time
+                    </th>
+
+
+                    <th>
+                        Payment Method
+                    </th>
+
+
+                    <th>
+                        Payment Status
+                    </th>
+
+
+                    <th>
+                        Amount
+                    </th>
+
+
+                </tr>
+
+
+            </thead>
+
+
+
+            <tbody id="transactionTableBody">
+
+
+                <!-- Transaction data loaded here -->
+
+
+            </tbody>
+
+
+        </table>
+
+
+
+    </section>
+
+
+
+</div>
+
+
+
+
+
+<script src="manager.js"></script>
+
+
+
+<script>
+
+
+document.addEventListener(
+"DOMContentLoaded",
+function(){
+
+    loadTransactionsPage();
+
+});
+
+
+
+
+
+function loadTransactionsPage(){
+
+
+
+    const orders =
+
+    JSON.parse(
+        localStorage.getItem("burgerOrders")
+    ) || [];
+
+
+
+    const tbody =
+
+    document.getElementById(
+        "transactionTableBody"
+    );
+
+
+
+    tbody.innerHTML = "";
+
+
+
+    let revenue = 0;
+
+    let paidCount = 0;
+
+
+
+
+
+    orders.forEach(order=>{
+
+
+        revenue +=
+        Number(order.total) || 0;
+
+
+
+        if(
+            order.paymentStatus === "Paid"
+        ){
+
+            paidCount++;
+
+        }
+
+
+
+
+        tbody.innerHTML += `
+
+
+        <tr>
+
+
+            <td>
+
+                ${order.token}
+
+            </td>
+
+
+
+            <td>
+
+                ${order.dateTime || "N/A"}
+
+            </td>
+
+
+
+            <td>
+
+                ${order.paymentMethod}
+
+            </td>
+
+
+
+            <td>
+
+                ${order.paymentStatus}
+
+            </td>
+
+
+
+            <td>
+
+                ₹${order.total}
+
+            </td>
+
+
+
+        </tr>
+
+
+        `;
+
+
+    });
+
+
+
+
+
+    document.getElementById(
+        "transactionCount"
+    ).innerText =
+    orders.length;
+
+
+
+
+    document.getElementById(
+        "transactionRevenue"
+    ).innerText =
+    "₹" + revenue;
+
+
+
+
+    document.getElementById(
+        "paidOrders"
+    ).innerText =
+    paidCount;
+
+
+
+}
+
+
+
+
+
+function goBackManager(){
+
+
+    window.location.href =
+    "manager.html";
+
+
+}
+
+
+
+</script>
+
+
+
+</body>
+
+</html>
