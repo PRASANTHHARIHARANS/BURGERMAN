@@ -5,11 +5,16 @@
 
 
 
-let burgers = [
+/*====================================================
+ BURGERMAN YOUR ORDER LIST
+====================================================*/
+
+
+const burgerMenu = [
 
 
 {
-id:1,
+id:101,
 name:"Veg Supreme Burger",
 category:"veg",
 price:120,
@@ -17,8 +22,9 @@ image:"assets/veg-supreme.png"
 },
 
 
+
 {
-id:2,
+id:102,
 name:"Paneer Cheese Burger",
 category:"veg",
 price:150,
@@ -26,18 +32,21 @@ image:"assets/paneer-burger.png"
 },
 
 
+
 {
-id:3,
-name:"Classic Cheese Burger",
+id:103,
+name:"Classic Veg Burger",
 category:"veg",
-price:130,
+price:100,
 image:"assets/cheese-burger.png"
 },
 
 
 
+
+
 {
-id:4,
+id:104,
 name:"Chicken Crispy Burger",
 category:"nonveg",
 price:180,
@@ -45,8 +54,9 @@ image:"assets/chicken-burger.png"
 },
 
 
+
 {
-id:5,
+id:105,
 name:"Spicy Chicken Burger",
 category:"nonveg",
 price:200,
@@ -54,8 +64,9 @@ image:"assets/crispy-chicken.png"
 },
 
 
+
 {
-id:6,
+id:106,
 name:"BBQ Chicken Burger",
 category:"nonveg",
 price:220,
@@ -69,30 +80,22 @@ image:"assets/bbq-chicken.png"
 
 
 
-let cart = JSON.parse(localStorage.getItem("cart")) || [];
+// Existing Cart
+let cart =
+JSON.parse(
+localStorage.getItem("cart")
+)
+||
+[];
 
 
 
 
 
-// LOAD MENU
-
-window.onload=function()
-{
-
-if(document.getElementById("burgerContainer"))
-{
-
-displayMenu("all");
-
-}
-
-};
 
 
 
-
-
+// DISPLAY MENU
 
 
 function displayMenu(type)
@@ -100,30 +103,39 @@ function displayMenu(type)
 
 
 let container =
-document.getElementById("burgerContainer");
+document.getElementById(
+"burgerContainer"
+);
+
+
+
+if(!container)
+return;
+
 
 
 container.innerHTML="";
 
 
 
-let filtered;
+let items;
 
 
 
-if(type==="all")
+if(type=="all")
 {
 
-filtered=burgers;
+items=burgerMenu;
 
 }
 
 else
 {
 
-filtered =
-burgers.filter(
-item=>item.category===type
+items =
+burgerMenu.filter(
+burger =>
+burger.category==type
 );
 
 }
@@ -133,38 +145,51 @@ item=>item.category===type
 
 
 
-filtered.forEach(item=>{
+items.forEach(burger=>{
 
 
 container.innerHTML +=`
 
 
+
 <div class="burger-card">
 
 
-<img src="${item.image}">
+
+<img src="${burger.image}">
+
 
 
 <h2>
-${item.name}
+
+${burger.name}
+
 </h2>
 
 
+
 <p class="burger-price">
-₹ ${item.price}
+
+₹ ${burger.price}
+
 </p>
+
+
+
 
 
 <button class="add-cart-btn"
 
-onclick="addToCart(${item.id})">
+onclick="addToCart(${burger.id})">
 
 ADD TO CART
 
 </button>
 
 
+
 </div>
+
 
 
 `;
@@ -174,7 +199,13 @@ ADD TO CART
 });
 
 
+
 }
+
+
+
+
+
 
 
 
@@ -187,23 +218,28 @@ function addToCart(id)
 {
 
 
-let burger =
-burgers.find(
-item=>item.id===id
+let selectedBurger =
+burgerMenu.find(
+item =>
+item.id===id
 );
+
+
 
 
 
 let existing =
 cart.find(
-item=>item.id===id
+item =>
+item.id===id
 );
+
+
 
 
 
 if(existing)
 {
-
 
 existing.quantity++;
 
@@ -215,15 +251,17 @@ else
 
 cart.push({
 
-id:burger.id,
 
-name:burger.name,
+id:selectedBurger.id,
 
-image:burger.image,
+name:selectedBurger.name,
 
-price:burger.price,
+image:selectedBurger.image,
+
+price:selectedBurger.price,
 
 quantity:1
+
 
 });
 
@@ -232,17 +270,30 @@ quantity:1
 
 
 
+
+
+
 localStorage.setItem(
+
 "cart",
+
 JSON.stringify(cart)
+
 );
+
+
 
 
 
 showPopup();
 
 
+
 }
+
+
+
+
 
 
 
@@ -254,25 +305,43 @@ showPopup();
 function showPopup()
 {
 
-let popup =
-document.getElementById("cartPopup");
 
+let popup =
+document.getElementById(
+"cartPopup"
+);
+
+
+
+if(popup)
+{
 
 popup.style.display="flex";
 
+}
+
 
 }
+
+
 
 
 
 function closePopup()
 {
 
-document.getElementById("cartPopup")
+
+document.getElementById(
+"cartPopup"
+)
 .style.display="none";
 
 
 }
+
+
+
+
 
 
 
@@ -283,10 +352,47 @@ document.getElementById("cartPopup")
 function openCart()
 {
 
-window.location.href="cart.html";
+
+window.location.href=
+"cart.html";
 
 
 }
+
+
+
+
+
+
+
+
+// LOAD MENU WHEN PAGE OPENS
+
+
+window.addEventListener(
+
+"load",
+
+()=>{
+
+
+if(
+document.getElementById(
+"burgerContainer"
+)
+)
+
+{
+
+displayMenu("all");
+
+}
+
+
+
+}
+
+);
 /*====================================================
  CART PAGE FUNCTIONS
 ====================================================*/
