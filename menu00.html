@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>BurgerMan Menu</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+
+<div class="menu-page">
+
+
+
+<!-- HEADER -->
+
+<div class="page-header">
+
+<h1 class="page-title">
+BURGER MENU
+</h1>
+
+</div>
+
+
+
+<!-- CATEGORY BUTTONS -->
+
+<div class="category-buttons">
+
+
+<button onclick="displayMenu('all')">
+ALL BURGERS
+</button>
+
+
+<button onclick="displayMenu('veg')">
+VEG BURGERS
+</button>
+
+
+<button onclick="displayMenu('nonveg')">
+NON-VEG BURGERS
+</button>
+
+
+</div>
+
+
+
+
+<!-- BURGER DISPLAY AREA -->
+
+
+<div id="burgerContainer"
+class="menu-grid">
+
+
+</div>
+
+
+
+
+<!-- CART BUTTON -->
+
+
+<div class="cart-button-container">
+
+
+<button class="cart-btn"
+onclick="openCart()">
+
+YOUR WAY TO CART
+
+</button>
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+<!-- POPUP -->
+
+
+<div id="cartPopup"
+class="popup">
+
+
+<div class="popup-box">
+
+
+<h2>
+Burger Added To Cart
+</h2>
+
+
+<button onclick="closePopup()">
+OK
+</button>
+
+
+</div>
+
+</div>
+
+
+
+<script src="script.js"></script>
+
+
+</body>
+
+</html>
