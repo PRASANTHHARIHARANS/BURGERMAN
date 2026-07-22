@@ -808,3 +808,454 @@ window.location.href=
 
 
 }
+/*====================================================
+ RECEIPT GENERATION
+====================================================*/
+
+
+
+function generateToken()
+{
+
+
+let number =
+Math.floor(
+1000 + Math.random()*9000
+);
+
+
+
+return "BG"+number;
+
+
+}
+
+
+
+
+
+
+
+function loadReceipt()
+{
+
+
+let box =
+document.getElementById(
+"receiptBox"
+);
+
+
+
+if(!box)
+return;
+
+
+
+
+
+let cart =
+JSON.parse(
+localStorage.getItem("cart")
+)
+|| [];
+
+
+
+
+let payment =
+localStorage.getItem(
+"paymentMethod"
+)
+|| "Not Selected";
+
+
+
+
+
+let status =
+localStorage.getItem(
+"paymentStatus"
+)
+|| "Pending";
+
+
+
+
+
+let delivery =
+localStorage.getItem(
+"deliveryMode"
+)
+|| "Dine-In";
+
+
+
+
+
+let token =
+generateToken();
+
+
+
+
+
+let total=0;
+
+
+
+let rows="";
+
+
+
+
+
+cart.forEach((item,index)=>{
+
+
+let amount =
+item.price * item.quantity;
+
+
+total+=amount;
+
+
+
+rows +=`
+
+
+<tr>
+
+
+<td>
+${index+1}
+</td>
+
+
+<td>
+
+<img src="${item.image}">
+
+</td>
+
+
+<td>
+${item.name}
+</td>
+
+
+<td>
+${item.quantity}
+</td>
+
+
+<td>
+₹ ${amount}
+</td>
+
+
+
+</tr>
+
+
+`;
+
+
+
+});
+
+
+
+
+
+
+
+
+box.innerHTML=`
+
+
+
+<div class="receipt-container">
+
+
+
+<div class="receipt-info">
+
+
+<h2>
+Token ID : ${token}
+</h2>
+
+
+
+<p>
+Payment Mode :
+${payment}
+</p>
+
+
+
+<p>
+Payment Status :
+${status}
+</p>
+
+
+
+<p>
+Delivery Mode :
+${delivery}
+</p>
+
+
+
+</div>
+
+
+
+
+
+
+<table class="receipt-table">
+
+
+<thead>
+
+<tr>
+
+<th>
+Order No
+</th>
+
+
+<th>
+Image
+</th>
+
+
+<th>
+Burger
+</th>
+
+
+<th>
+Units
+</th>
+
+
+<th>
+Amount
+</th>
+
+
+</tr>
+
+
+</thead>
+
+
+<tbody>
+
+
+${rows}
+
+
+</tbody>
+
+
+
+</table>
+
+
+
+
+
+<h2 style="text-align:center;margin-top:30px">
+
+Total Amount :
+₹ ${total}
+
+</h2>
+
+
+
+</div>
+
+
+
+`;
+
+
+
+
+
+
+saveOrder(
+
+token,
+
+cart,
+
+total,
+
+payment,
+
+status,
+
+delivery
+
+);
+
+
+
+
+
+
+}
+
+
+
+
+
+// SAVE ORDER FOR MANAGER
+
+
+function saveOrder(
+token,
+cart,
+total,
+payment,
+status,
+delivery
+)
+
+{
+
+
+let orders =
+JSON.parse(
+localStorage.getItem(
+"burgerOrders"
+)
+)
+|| [];
+
+
+
+
+
+let order={
+
+
+token:token,
+
+items:cart,
+
+total:total,
+
+payment:payment,
+
+status:status,
+
+delivery:delivery,
+
+
+time:
+new Date()
+.toLocaleString()
+
+
+};
+
+
+
+
+
+orders.push(order);
+
+
+
+
+
+localStorage.setItem(
+
+"burgerOrders",
+
+JSON.stringify(orders)
+
+);
+
+
+
+}
+
+
+
+
+
+
+
+
+// PRINT
+
+
+function printReceipt()
+{
+
+window.print();
+
+}
+
+
+
+
+
+
+
+
+// NEW CUSTOMER ORDER
+
+
+function newOrder()
+{
+
+
+localStorage.removeItem(
+"cart"
+);
+
+
+localStorage.removeItem(
+"paymentMethod"
+);
+
+
+localStorage.removeItem(
+"paymentStatus"
+);
+
+
+localStorage.removeItem(
+"deliveryMode"
+);
+
+
+
+
+window.location.href=
+"index.html";
+
+
+}
+
+
+
+
+
+
+
+
+window.addEventListener(
+"load",
+loadReceipt
+);
