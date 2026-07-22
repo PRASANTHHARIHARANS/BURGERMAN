@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<title>
+Your Order List - BurgerMan
+</title>
+
+
+<link rel="stylesheet" href="style.css">
+
+
+</head>
+
+
+
+<body>
+
+
+
+<div class="menu-page">
+
+
+
+<!-- HEADER -->
+
+
+<div class="page-header">
+
+<h1 class="page-title">
+
+YOUR ORDER LIST
+
+</h1>
+
+</div>
+
+
+
+
+
+<!-- CATEGORY BUTTONS -->
+
+
+<div class="category-buttons">
+
+
+<button onclick="displayMenu('all')">
+
+ALL BURGERS
+
+</button>
+
+
+
+<button onclick="displayMenu('veg')">
+
+VEG BURGERS
+
+</button>
+
+
+
+<button onclick="displayMenu('nonveg')">
+
+NON-VEG BURGERS
+
+</button>
+
+
+
+</div>
+
+
+
+
+
+
+
+<!-- BURGER CARDS WILL APPEAR HERE -->
+
+
+<div id="burgerContainer"
+class="menu-grid">
+
+</div>
+
+
+
+
+
+
+
+<!-- CART BUTTON -->
+
+
+<div class="cart-button-container">
+
+
+<button class="cart-btn"
+
+onclick="openCart()">
+
+YOUR WAY TO CART
+
+</button>
+
+
+</div>
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+<!-- ADD TO CART POPUP -->
+
+
+<div id="cartPopup"
+class="popup">
+
+
+
+<div class="popup-box">
+
+
+<h2>
+
+Burger Added To Cart
+
+</h2>
+
+
+
+<p>
+
+Your burger has been added successfully
+
+</p>
+
+
+
+<button onclick="closePopup()">
+
+OK
+
+</button>
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+<script src="script.js"></script>
+
+
+
+</body>
+
+
+</html>
