@@ -287,3 +287,372 @@ window.location.href="cart.html";
 
 
 }
+/*====================================================
+ CART PAGE FUNCTIONS
+====================================================*/
+
+
+
+function loadCart()
+{
+
+
+let body =
+document.getElementById("cartBody");
+
+
+
+if(!body)
+return;
+
+
+
+let cart =
+JSON.parse(localStorage.getItem("cart")) || [];
+
+
+
+body.innerHTML="";
+
+
+
+let total=0;
+
+
+
+cart.forEach((item,index)=>{
+
+
+let amount =
+item.price * item.quantity;
+
+
+
+total += amount;
+
+
+
+body.innerHTML +=`
+
+
+<tr>
+
+
+<td>
+${index+1}
+</td>
+
+
+
+<td>
+
+<img src="${item.image}">
+
+</td>
+
+
+
+<td>
+${item.name}
+</td>
+
+
+
+
+<td>
+
+
+<div class="quantity-box">
+
+
+<button onclick="decreaseQty(${item.id})">
+-
+</button>
+
+
+
+<span>
+${item.quantity}
+</span>
+
+
+
+<button onclick="increaseQty(${item.id})">
++
+</button>
+
+
+</div>
+
+
+</td>
+
+
+
+
+
+<td>
+₹ ${item.price}
+</td>
+
+
+
+<td>
+₹ ${amount}
+</td>
+
+
+
+<td>
+
+<button class="remove-btn"
+onclick="removeItem(${item.id})">
+
+Remove
+
+</button>
+
+</td>
+
+
+
+</tr>
+
+
+`;
+
+
+
+});
+
+
+
+document.getElementById("totalAmount")
+.innerHTML =
+"Total : ₹ "+total;
+
+
+
+}
+
+
+
+
+
+// INCREASE
+
+
+function increaseQty(id)
+{
+
+
+let cart =
+JSON.parse(localStorage.getItem("cart"));
+
+
+
+let item =
+cart.find(x=>x.id===id);
+
+
+
+item.quantity++;
+
+
+
+localStorage.setItem(
+"cart",
+JSON.stringify(cart)
+);
+
+
+
+loadCart();
+
+
+}
+
+
+
+
+
+// DECREASE
+
+
+function decreaseQty(id)
+{
+
+
+let cart =
+JSON.parse(localStorage.getItem("cart"));
+
+
+
+let item =
+cart.find(x=>x.id===id);
+
+
+
+if(item.quantity>1)
+{
+
+item.quantity--;
+
+}
+
+else
+{
+
+cart =
+cart.filter(
+x=>x.id!==id
+);
+
+}
+
+
+
+localStorage.setItem(
+"cart",
+JSON.stringify(cart)
+);
+
+
+
+loadCart();
+
+
+}
+
+
+
+
+
+
+
+// REMOVE
+
+
+function removeItem(id)
+{
+
+
+let cart =
+JSON.parse(localStorage.getItem("cart"));
+
+
+
+cart =
+cart.filter(
+item=>item.id!==id
+);
+
+
+
+localStorage.setItem(
+"cart",
+JSON.stringify(cart)
+);
+
+
+
+loadCart();
+
+
+}
+
+
+
+
+
+
+
+
+// DELIVERY MODE
+
+
+function changeDelivery()
+{
+
+
+let slider =
+document.getElementById(
+"deliverySlider"
+);
+
+
+
+let mode;
+
+
+
+if(slider.value==1)
+{
+
+mode="Takeaway";
+
+}
+
+else
+{
+
+mode="Dine-In";
+
+}
+
+
+
+
+localStorage.setItem(
+"deliveryMode",
+mode
+);
+
+
+
+document.getElementById(
+"deliveryText"
+)
+.innerHTML =
+mode+" Selected";
+
+
+}
+
+
+
+
+
+
+function continueShopping()
+{
+
+window.location.href="menu.html";
+
+}
+
+
+
+
+
+function goPayment()
+{
+
+
+window.location.href="payment.html";
+
+
+}
+
+
+
+
+
+
+// LOAD CART AUTOMATICALLY
+
+
+window.addEventListener(
+"load",
+loadCart
+);
