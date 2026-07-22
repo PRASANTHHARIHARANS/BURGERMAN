@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Your Cart - BurgerMan</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+
+
+<body>
+
+
+<div class="cart-page">
+
+
+
+<!-- HEADER -->
+
+<div class="page-header">
+
+<h1 class="page-title">
+YOUR CART
+</h1>
+
+</div>
+
+
+
+
+<!-- CART IMAGE -->
+
+<img src="assets/cart.png"
+class="cart-image"
+alt="Cart">
+
+
+
+
+
+<!-- CART TABLE -->
+
+
+<table class="cart-table">
+
+
+<thead>
+
+<tr>
+
+<th>Order No</th>
+
+<th>Image</th>
+
+<th>Burger Name</th>
+
+<th>Units</th>
+
+<th>Price</th>
+
+<th>Amount</th>
+
+<th>Remove</th>
+
+
+</tr>
+
+</thead>
+
+
+
+<tbody id="cartBody">
+
+
+</tbody>
+
+
+</table>
+
+
+
+
+
+<h2 id="totalAmount"
+class="total">
+
+Total : ₹0
+
+</h2>
+
+
+
+
+
+
+<!-- DELIVERY SLIDER -->
+
+
+<div class="delivery-section">
+
+
+<h2>
+Delivery Mode
+</h2>
+
+
+
+<div class="slider-box">
+
+
+<span>
+Dine-In
+</span>
+
+
+<input type="range"
+id="deliverySlider"
+min="0"
+max="1"
+value="0"
+oninput="changeDelivery()">
+
+
+
+<span>
+Takeaway
+</span>
+
+
+
+</div>
+
+
+<h3 id="deliveryText">
+Dine-In Selected
+</h3>
+
+
+
+</div>
+
+
+
+
+
+
+
+<!-- BUTTONS -->
+
+
+<div class="cart-actions">
+
+
+<button onclick="continueShopping()">
+
+CONTINUE SHOPPING
+
+</button>
+
+
+
+<button onclick="goPayment()">
+
+PAYMENTS
+
+</button>
+
+
+</div>
+
+
+
+
+</div>
+
+
+
+
+
+<script src="script.js"></script>
+
+
+</body>
+
+</html>
