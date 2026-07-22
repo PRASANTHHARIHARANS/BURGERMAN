@@ -369,28 +369,20 @@ background:#ffb347;
 
 .menu-grid{
 
-
 display:grid;
 
 grid-template-columns:
-
 repeat(auto-fit,minmax(250px,1fr));
-
 
 gap:30px;
 
 padding:30px;
 
-
 }
 
 
 
-/* BURGER CARD */
-
-
 .burger-card{
-
 
 background:#222;
 
@@ -399,9 +391,6 @@ border-radius:20px;
 padding:20px;
 
 text-align:center;
-
-box-shadow:0 5px 15px black;
-
 
 }
 
@@ -424,9 +413,9 @@ object-fit:contain;
 .burger-card h2{
 
 
-margin:15px;
-
 color:#ff8300;
+
+margin:15px;
 
 
 }
@@ -440,7 +429,7 @@ font-size:22px;
 
 font-weight:bold;
 
-margin-bottom:15px;
+color:white;
 
 
 }
