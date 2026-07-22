@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+
+<html>
+
+
+<head>
+
+<title>
+Transaction History
+</title>
+
+
+<link rel="stylesheet" href="style.css">
+
+
+</head>
+
+
+
+<body>
+
+
+<div class="manager-page">
+
+
+
+<div class="page-header">
+
+
+<h1 class="page-title">
+TRANSACTION HISTORY
+</h1>
+
+
+</div>
+
+
+
+
+<div class="filter-box">
+
+
+<select id="filterDate"
+onchange="filterTransactions()">
+
+
+
+<option value="all">
+All Transactions
+</option>
+
+
+<option value="day">
+Today
+</option>
+
+
+<option value="month">
+This Month
+</option>
+
+
+</select>
+
+
+</div>
+
+
+
+
+
+<table class="manager-table">
+
+
+<thead>
+
+
+<tr>
+
+
+<th>
+Token
+</th>
+
+
+<th>
+Time
+</th>
+
+
+<th>
+Amount
+</th>
+
+
+<th>
+Payment
+</th>
+
+
+<th>
+Status
+</th>
+
+
+</tr>
+
+
+</thead>
+
+
+
+<tbody id="transactionTable">
+
+</tbody>
+
+
+
+</table>
+
+
+
+
+
+</div>
+
+
+
+
+
+<script src="manager.js"></script>
+
+
+</body>
+
+
+</html>
