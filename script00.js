@@ -656,3 +656,155 @@ window.addEventListener(
 "load",
 loadCart
 );
+/*====================================================
+ PAYMENT FUNCTIONS
+====================================================*/
+
+
+let selectedPayment="";
+
+
+
+
+// SELECT PAYMENT METHOD
+
+
+function selectPayment(method)
+{
+
+
+selectedPayment=method;
+
+
+
+localStorage.setItem(
+"paymentMethod",
+method
+);
+
+
+
+let message =
+document.getElementById(
+"paymentMessage"
+);
+
+
+
+
+if(method==="UPI")
+{
+
+
+message.innerHTML = `
+
+
+<p>
+Scan QR Code To Pay
+</p>
+
+
+<img src="assets/upi-qr.png">
+
+
+`;
+
+
+
+}
+
+
+
+
+
+else if(method==="CARD")
+{
+
+
+message.innerHTML = `
+
+
+<p>
+Insert Your Card In The Machine Below
+</p>
+
+
+`;
+
+
+
+}
+
+
+
+
+
+else if(method==="CASH")
+{
+
+
+message.innerHTML = `
+
+
+<p>
+Pay In Cash At The Counter
+</p>
+
+
+`;
+
+
+
+}
+
+
+
+}
+
+
+
+
+
+
+
+// COMPLETE PAYMENT
+
+
+function makePayment()
+{
+
+
+if(selectedPayment==="")
+{
+
+alert(
+"Please Select Payment Method"
+);
+
+return;
+
+}
+
+
+
+
+
+localStorage.setItem(
+"paymentStatus",
+selectedPayment==="CASH"
+?
+"Pending"
+:
+"Paid"
+);
+
+
+
+
+
+window.location.href=
+"receipt.html";
+
+
+
+}
