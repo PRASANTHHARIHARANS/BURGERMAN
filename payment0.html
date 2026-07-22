@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+
+<title>
+Payment - BurgerMan
+</title>
+
+
+<link rel="stylesheet" href="style.css">
+
+
+</head>
+
+
+
+<body>
+
+
+
+<div class="payment-page">
+
+
+
+<div class="page-header">
+
+<h1 class="page-title">
+PAYMENT
+</h1>
+
+</div>
+
+
+
+
+
+<h2 class="payment-title">
+
+Select Payment Method
+
+</h2>
+
+
+
+
+
+
+<div class="payment-options">
+
+
+
+
+
+
+<!-- UPI -->
+
+<div class="payment-card">
+
+
+<input type="radio"
+name="payment"
+value="UPI"
+onclick="selectPayment('UPI')">
+
+
+<img src="assets/upi.png">
+
+
+<h3>
+UPI PAYMENT
+</h3>
+
+
+</div>
+
+
+
+
+
+
+
+
+<!-- CARD -->
+
+
+<div class="payment-card">
+
+
+<input type="radio"
+name="payment"
+value="CARD"
+onclick="selectPayment('CARD')">
+
+
+<img src="assets/card.png">
+
+
+<h3>
+CARD PAYMENT
+</h3>
+
+
+</div>
+
+
+
+
+
+
+
+
+<!-- CASH -->
+
+
+<div class="payment-card">
+
+
+<input type="radio"
+name="payment"
+value="CASH"
+onclick="selectPayment('CASH')">
+
+
+<img src="assets/cash.png">
+
+
+<h3>
+CASH PAYMENT
+</h3>
+
+
+</div>
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+<!-- PAYMENT RESULT -->
+
+
+<div id="paymentMessage"
+class="payment-message">
+
+
+</div>
+
+
+
+
+
+
+
+<button class="pay-btn"
+onclick="makePayment()">
+
+CLICK TO PAY
+
+</button>
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+<script src="script.js"></script>
+
+
+</body>
+
+</html>
